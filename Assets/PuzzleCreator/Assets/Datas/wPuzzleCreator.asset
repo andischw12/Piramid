@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79437344b01f5418a8e3f92d87c3253c, type: 3}
+  m_Name: wPuzzleCreator
+  m_EditorClassIdentifier: 
+  helpBoxEditor: 1
+  currentTypeSelected: 0
+  listOfPuzzles:
+  - {fileID: 2234162842571184282, guid: 185e6f9ae09af45dfa153fa9e888ee30, type: 3}
+  - {fileID: 1865724419346685136, guid: 55644baa655544ef49eb17c710e1ae6b, type: 3}
+  - {fileID: 291765786975865302, guid: 425ab4728283b429789e8d38709674e3, type: 3}
+  - {fileID: 4982647835229812787, guid: f5b57f3d44ef64fcfae0ae0567aa9c4d, type: 3}
+  - {fileID: 329042521961882631, guid: 6f548827683284accac7cf8bee1b4d76, type: 3}
+  - {fileID: 759038944440822038, guid: 024d66dc19e1e47df9d91df9b44b83d4, type: 3}
+  - {fileID: 1252423681122608339, guid: 9a32b93453bf84f9190faccbcec69295, type: 3}
+  b_SaveSystem: 1
+  b_ActivatedTheFirstTime: 1
+  clueSystem: {fileID: 8425525747604715261, guid: 9b077e29e5f31458abd247f3d9e4ef90,
+    type: 3}
+  StarterKit: {fileID: 6673097305401119283, guid: d6685c31105464e2385cf0a7ac5395f2,
+    type: 3}
+  currentLayerPuzzle: 27
+  currentLayerPuzzleFeedbackCam: 28
+  currentLayerPuzzleRay: 29
+  currentLayerPuzzleDragAndDrop: 30
+  SaveAsPlayerPrefs: 0
