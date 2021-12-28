@@ -127,6 +127,8 @@ namespace DiasGames.ThirdPersonSystem
         public float m_HorizontalAmount { get; private set; }          // Horizontal amount for strafe
         public float m_VerticalAmount { get; private set; }            // Vertical amount for strafe
 
+        public float TurnSpeed=2.5f; 
+
         private AnimatorManager m_AnimatorManager;                      // Reference to Animator Manager
 
         public float TurnAmount { get { return m_TurnAmount; } }
@@ -296,7 +298,7 @@ namespace DiasGames.ThirdPersonSystem
             // help the character turn faster (this is in addition to root rotation in the animation)
             float turnSpeed = Mathf.Lerp(stationarySpeed, movingTurnSpeed, m_ForwardAmount);
             
-            transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime/2, 0);
+            transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime/TurnSpeed, 0); //andy make rotation slower
         }
 
         /// <summary>
