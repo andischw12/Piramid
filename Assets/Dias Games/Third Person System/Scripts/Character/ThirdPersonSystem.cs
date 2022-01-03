@@ -270,6 +270,8 @@ namespace DiasGames.ThirdPersonSystem
 
             m_VerticalAmount = Vector3.Dot(m_StrafeDirection, transform.forward);
             m_HorizontalAmount = Vector3.Dot(m_StrafeDirection, transform.right);
+
+
             //Andy
 
             if(Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.X))
@@ -278,42 +280,58 @@ namespace DiasGames.ThirdPersonSystem
                 m_TurnAmount = m_TurnAmountCpy;
                 Invoke("ChangeFlag", 0.2f);
             }
-            
+
+
+
+            if((!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)) && 
+                (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode. D))) 
             {
-                if (Input.anyKey && !ButtonBackIsPressed())
-                {
-
-                    if (!JustStopWalkingBack)
-                        m_TurnAmount = Mathf.Atan2(FreeMoveDirection.x, FreeMoveDirection.z);
-
-                }
-                else if (ButtonBackIsPressed())
-                {
-
-                    if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-                        m_TurnAmount = Mathf.Atan2(FreeMoveDirection.x, FreeMoveDirection.z) * -0.2f;
-
-                }
-
-                else
+                if ((m_TurnAmount < 0.1f && m_TurnAmount > 0) || (m_TurnAmount > 00.1f && m_TurnAmount < 0))
                     m_TurnAmount = 0;
-                if (FreeOnMove(InputManager.RelativeInput) || !IsGrounded)
-                      m_ForwardAmount = FreeMoveDirection.z;
-                 else
-                    m_ForwardAmount = 0;
 
-            if (InputManager.walkButton.IsPressed)
-                m_ForwardAmount = Mathf.Clamp(m_ForwardAmount, 0, 0.5f);
-
-                //Andy
+               else if (m_TurnAmount < 0)
+                    m_TurnAmount += 0.1f;
+                else if (m_TurnAmount > 0)
+                    m_TurnAmount -= 0.1f;
                
             }
             
 
+            else if (Input.anyKey && !ButtonBackIsPressed())
+            {
+
+                if (!JustStopWalkingBack)
+                    m_TurnAmount = Mathf.Atan2(FreeMoveDirection.x, FreeMoveDirection.z);
+
+            }
+            else if (ButtonBackIsPressed())
+            {
+
+                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+                    m_TurnAmount = Mathf.Atan2(FreeMoveDirection.x, FreeMoveDirection.z) * -0.2f;
+
+            }
+
+            else
+                m_TurnAmount = 0;
+            if (FreeOnMove(InputManager.RelativeInput) || !IsGrounded)
+                    m_ForwardAmount = FreeMoveDirection.z;
+            else
+            m_ForwardAmount = 0;
+
+            if (InputManager.walkButton.IsPressed)
+                m_ForwardAmount = Mathf.Clamp(m_ForwardAmount, 0, 0.5f);
+
+            //Andy
+
+            //Debug.Log("Turn ammount is: " + m_TurnAmount);
+
+
+
         }
 
 
-         void ChangeFlag() 
+        void ChangeFlag() 
         {
             JustStopWalkingBack = false;
         }

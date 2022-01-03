@@ -151,7 +151,6 @@ namespace DiasGames.ThirdPersonSystem.ClimbingSystem
 
         private void Start()
         {
-       
             statesDuration[m_JumpToHang] = jumpHangClipDuration;
             statesDuration[m_JumpToLowerClimb] = jumpLowerClipDuration;
             statesDuration[JumpBackParameters.m_AnimationState] = JumpBackParameters.clipDuration;
@@ -162,7 +161,6 @@ namespace DiasGames.ThirdPersonSystem.ClimbingSystem
 
         public override string GetEnterState()
         {
-            print("Hey");
             // Select animation state based on JumpDirection
             switch (m_JumpType)
             {
@@ -294,10 +292,9 @@ namespace DiasGames.ThirdPersonSystem.ClimbingSystem
         /// <returns>Time to reach the target point</returns>
         public float StartClimbJump(ClimbJumpType jumpType, Vector3 directionVector, Vector3 GrabPosition, float LinecastStartHeight, bool abilityUseMath, Collider ignoreCollider = null)
         {
-            print("i am");
             m_JumpType = jumpType;
             if (m_UseLaunchMath && abilityUseMath)
-             LaunchCharacter(directionVector, GrabPosition, LinecastStartHeight, ignoreCollider);
+                LaunchCharacter(directionVector, GrabPosition, LinecastStartHeight, ignoreCollider);
             else
             {
                 JumpParameters parameter = new JumpParameters();
@@ -746,13 +743,11 @@ namespace DiasGames.ThirdPersonSystem.ClimbingSystem
 
         private void LaunchCharacter(Vector3 m_JumpDirectionVector, Vector3 GrabPosition, float LinecastStart, Collider ignoreCollider = null)
         {
-
             Vector3 offset = Vector3.zero;      // Start without offset
 
             JumpParameters parameter = new JumpParameters();
-          
-            // Choose jump parameters based on Jump Type
 
+            // Choose jump parameters based on Jump Type
             switch (m_JumpType)
             {
                 case ClimbJumpType.Up:
@@ -828,13 +823,13 @@ namespace DiasGames.ThirdPersonSystem.ClimbingSystem
             }
 
             Debug.DrawRay(target, -transform.forward, Color.magenta, 3f);
-            print("me");
+
             float totalHeight = target.y - GrabPosition.y;
             totalHeight = Mathf.Clamp(totalHeight, HopUpParameters.m_MaxJumpHeight * 0.2f, HopUpParameters.m_MaxJumpHeight + 0.5f);
             float speed = Mathf.Sqrt(-2 * m_Gravity * totalHeight);
 
             float time = Mathf.Sqrt(-2 * totalHeight / m_Gravity);
-            
+
             return new LaunchData(Vector3.up * speed, target, time, true);
         }
 
