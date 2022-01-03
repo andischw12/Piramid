@@ -25,6 +25,7 @@ namespace DiasGames.ThirdPersonSystem
                        
             m_System.CalculateMoveVars();
             m_System.UpdateMovementAnimator(0.1f);
+            
             m_System.RotateToDirection();
         }
 

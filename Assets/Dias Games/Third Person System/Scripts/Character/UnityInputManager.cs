@@ -183,11 +183,11 @@ namespace DiasGames.ThirdPersonSystem
                 m_ScrollView.x = Input.GetAxis("Mouse X");
                 m_ScrollView.y = Input.GetAxis("Mouse Y");
             }
-
+            
             // calculate camera relative direction to move:
             Vector3 CamForward = Vector3.Scale(m_Camera.forward, new Vector3(1, 0, 1)).normalized;
             m_RelativeInput = m_Move.y * CamForward + m_Move.x * m_Camera.right;
-
+           
         }
 
         private void Update()

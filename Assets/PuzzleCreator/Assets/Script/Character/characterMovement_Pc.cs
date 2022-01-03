@@ -251,9 +251,11 @@ public class characterMovement_Pc : MonoBehaviour {
 		// --> Forward backward movement Keyboard
 		else {
             Direction += FindTangentZ () * Input.GetAxis(verticalAxis);
-		}
+            
 
-		if(b_MoveRight || b_MoveLeft || b_MoveBackward || b_MoveForward){
+        }
+
+        if (b_MoveRight || b_MoveLeft || b_MoveBackward || b_MoveForward){
 			smoothStart = Mathf.MoveTowards (smoothStart, 1, Time.deltaTime*2);
 		}
 

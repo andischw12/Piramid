@@ -16,7 +16,7 @@ public class ShadowJumpScript : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space) && !InJump) 
+        if (Input.GetKeyDown(KeyCode.Space)) 
         {
             GetComponent<MeshRenderer>().material.color=  new Color (GetComponent<MeshRenderer>().material.color.r, GetComponent<MeshRenderer>().material.color.b, GetComponent<MeshRenderer>().material.color.g, GetComponent<MeshRenderer>().material.color.a -0.001f);
         

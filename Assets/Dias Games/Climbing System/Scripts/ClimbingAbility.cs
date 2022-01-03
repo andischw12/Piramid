@@ -479,6 +479,7 @@ namespace DiasGames.ThirdPersonSystem.ClimbingSystem
             // Fast move
             if (m_InputManager.jumpButton.WasPressed)
             {
+                print("me");
                 m_MoveMultiplier = 2f;
                 m_MultiplierLastTime = Time.fixedTime + 0.5f;
             }

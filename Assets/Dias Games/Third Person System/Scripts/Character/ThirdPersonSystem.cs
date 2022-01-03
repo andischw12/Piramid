@@ -136,8 +136,11 @@ namespace DiasGames.ThirdPersonSystem
         #endregion
 
         public RaycastHit GroundHitInfo { get; private set; }
-
+        bool walkingback = false;
         private bool m_IsAICharacter = false;
+        private bool JustStopWalkingBack;
+
+
         public void SetControllerAsAI()
         {
             m_IsAICharacter = true;
@@ -232,10 +235,11 @@ namespace DiasGames.ThirdPersonSystem
 
         #region Movement methods
 
-        public Vector3 FreeMoveDirection
+        public Vector3 FreeMoveDirection // here is problem walking back
         {
             get
             {
+                 
                 Vector3 m_FreeMoveDirection = InputManager.RelativeInput;
 
 
@@ -255,6 +259,7 @@ namespace DiasGames.ThirdPersonSystem
         /// </summary>
         public void CalculateMoveVars()
         {
+           float m_TurnAmountCpy = Mathf.Atan2(FreeMoveDirection.x, FreeMoveDirection.z);
             if (!IsGrounded)
                 return;
 
@@ -265,17 +270,57 @@ namespace DiasGames.ThirdPersonSystem
 
             m_VerticalAmount = Vector3.Dot(m_StrafeDirection, transform.forward);
             m_HorizontalAmount = Vector3.Dot(m_StrafeDirection, transform.right);
+            //Andy
 
-            m_TurnAmount = Mathf.Atan2(FreeMoveDirection.x, FreeMoveDirection.z);
+            if(Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.X))
+            {
+                JustStopWalkingBack = true;
+                m_TurnAmount = m_TurnAmountCpy;
+                Invoke("ChangeFlag", 0.2f);
+            }
+            
+            {
+                if (Input.anyKey && !ButtonBackIsPressed())
+                {
 
-            if (FreeOnMove(InputManager.RelativeInput) || !IsGrounded)
-                m_ForwardAmount = FreeMoveDirection.z;
-            else
-                m_ForwardAmount = 0;
+                    if (!JustStopWalkingBack)
+                        m_TurnAmount = Mathf.Atan2(FreeMoveDirection.x, FreeMoveDirection.z);
+
+                }
+                else if (ButtonBackIsPressed())
+                {
+
+                    if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+                        m_TurnAmount = Mathf.Atan2(FreeMoveDirection.x, FreeMoveDirection.z) * -0.2f;
+
+                }
+
+                else
+                    m_TurnAmount = 0;
+                if (FreeOnMove(InputManager.RelativeInput) || !IsGrounded)
+                      m_ForwardAmount = FreeMoveDirection.z;
+                 else
+                    m_ForwardAmount = 0;
 
             if (InputManager.walkButton.IsPressed)
                 m_ForwardAmount = Mathf.Clamp(m_ForwardAmount, 0, 0.5f);
+
+                //Andy
+               
+            }
             
+
+        }
+
+
+         void ChangeFlag() 
+        {
+            JustStopWalkingBack = false;
+        }
+
+        bool ButtonBackIsPressed() 
+        {
+            return Input.GetKey(KeyCode.DownArrow) ||Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.S) || Input.GetKeyDown(KeyCode.S);
         }
 
         /// <summary>
@@ -284,9 +329,16 @@ namespace DiasGames.ThirdPersonSystem
         public void UpdateMovementAnimator(float dampTime = 0.1f)
         {
             // Set animator parameters of movement
-            m_AnimatorManager.SetForwardParameter(m_ForwardAmount, dampTime);
+             
+                m_AnimatorManager.SetForwardParameter(m_ForwardAmount, dampTime);
+             
+           
+            
             m_AnimatorManager.SetTurnParameter(m_TurnAmount, dampTime);
+         
+                
             m_AnimatorManager.SetVerticallParameter(m_VerticalAmount, dampTime);
+             
             m_AnimatorManager.SetHorizontalParameter(m_HorizontalAmount, dampTime);
         }
 
@@ -296,8 +348,13 @@ namespace DiasGames.ThirdPersonSystem
         public void RotateToDirection(float stationarySpeed, float movingTurnSpeed)
         {
             // help the character turn faster (this is in addition to root rotation in the animation)
-            float turnSpeed = Mathf.Lerp(stationarySpeed, movingTurnSpeed, m_ForwardAmount);
+           
+
+                
+                float turnSpeed = Mathf.Lerp(stationarySpeed, movingTurnSpeed, m_ForwardAmount);
             
+             
+             
             transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime/TurnSpeed, 0); //andy make rotation slower
         }
 
@@ -306,7 +363,9 @@ namespace DiasGames.ThirdPersonSystem
         /// </summary>
         public void RotateToDirection()
         {
+              
             RotateToDirection(m_StationaryTurnSpeed, m_MovingTurnSpeed);
+            
         }
 
 
@@ -551,7 +610,13 @@ namespace DiasGames.ThirdPersonSystem
 
 
         /// <summary>
-        /// Method to make gravity more realistic on Jump
+        /// Method to make gravity more realistic on 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
         /// </summary>
         void HandleAir()
         {
@@ -612,6 +677,7 @@ namespace DiasGames.ThirdPersonSystem
 
                 float FinalAngle = Vector3.SignedAngle(Vector3.forward, direction.normalized, Vector3.up) + DeltaYAngle;
 
+ 
                 float xMult = Vector3.Dot(Vector3.forward, direction.normalized) > 0 ? 1 : -1;
                 float zMult = Vector3.Dot(Vector3.right, direction.normalized) > 0 ? -1 : 1;
 
