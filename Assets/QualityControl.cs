@@ -28,13 +28,13 @@ public class QualityControl : MonoBehaviour
             Camera.main.GetComponent<BeautifyEffect.Beautify>().enabled = true;
             Camera.main.GetComponent<FXAA>().enabled = true;
             ChangeShader(HighShader);
-            CharactherLight.enabled = true;
+           // CharactherLight.enabled = true;
 
         }
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            CharactherLight.enabled = false;
+            //CharactherLight.enabled = false;
 
             Camera.main.GetComponent<BeautifyEffect.Beautify>().enabled = false;
             Camera.main.GetComponent<FXAA>().enabled = false;
