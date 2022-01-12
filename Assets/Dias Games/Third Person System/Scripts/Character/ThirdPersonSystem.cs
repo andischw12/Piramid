@@ -200,10 +200,7 @@ namespace DiasGames.ThirdPersonSystem
             if (!m_IsAICharacter)
             {
                 // Check Camera Zoom
-                if (m_InputManager.zoomButton.IsPressed || m_AlwaysZoomCamera)
-                    TryZoom();
-                else
-                    isZomming = false;
+                
             }
 
             // ----------------------- ABILITY UPDATE --------------------------- //

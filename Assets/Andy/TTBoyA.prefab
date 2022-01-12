@@ -1544,7 +1544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2882613509585446952}
   - component: {fileID: 2882613509580011674}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: TTBHairE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1628,7 +1628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2882613509585446954}
   - component: {fileID: 2882613509580011676}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: TTBHoodA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1947,7 +1947,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.28216162, y: -0.01319606, z: -0.082217805}
+  m_ConnectedAnchor: {x: -0.28216162, y: -0.013197014, z: -0.082217805}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -2449,7 +2449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2882613509585447388}
   - component: {fileID: 2882613509580011662}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: TTBFeetC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2539,7 +2539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2882613509585446916}
   - component: {fileID: 2882613509580011760}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: TTBTshirtLB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2669,7 +2669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2882613509585446924}
   - component: {fileID: 2882613509580011768}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: TTBLegsLD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2923,7 +2923,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.40100712, y: -0.01038227, z: -0.000000023202947}
+  m_ConnectedAnchor: {x: -0.40100712, y: -0.010381317, z: -0.000000023198979}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -3033,7 +3033,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.29395315, y: -0.00000043605684, z: -0.0000000015326691}
+  m_ConnectedAnchor: {x: -0.29395315, y: 0.0000005176172, z: -0.0000000015339765}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -3139,7 +3139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2882613509585447336}
   - component: {fileID: 2882613509580011656}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: HEAD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4217,7 +4217,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.17838837, y: -0.0000004302619, z: -0.000000027939677}
+  m_ConnectedAnchor: {x: -0.17838837, y: 0.00000052341244, z: -0.000000027939677}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -4861,7 +4861,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.28216183, y: -0.013196283, z: 0.0822177}
+  m_ConnectedAnchor: {x: -0.28216183, y: -0.013197237, z: 0.0822177}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -5398,6 +5398,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3387339525494071050}
   - component: {fileID: 3387339525494071051}
+  - component: {fileID: 1112327418}
+  - component: {fileID: 1112327417}
   m_Layer: 0
   m_Name: puzzleRaycast
   m_TagString: Untagged
@@ -5438,6 +5440,35 @@ MonoBehaviour:
   RayDistance: 1.5
   b_DeactivateMainCamera: 1
   reticuleSelectedColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!54 &1112327418
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3387339525494071049}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1112327417
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3387339525494071049}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8478886561678336117
 GameObject:
   m_ObjectHideFlags: 0

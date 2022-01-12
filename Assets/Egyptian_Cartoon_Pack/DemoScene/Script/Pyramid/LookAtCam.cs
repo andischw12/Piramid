@@ -4,17 +4,22 @@ using System.Collections;
 public class LookAtCam : MonoBehaviour {
 
 
-	private Transform cam;
-	// Use this for initialization
-	void Start () {
 
-		cam = Camera.main.transform;
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		transform.LookAt(transform.position + cam.rotation * Vector3.forward,
-		                 cam.rotation * Vector3.up);
-	}
+    Camera cameraToLookAt;
+
+    // Use this for initialization 
+    void Start()
+    {
+        cameraToLookAt = Camera.main;
+
+    }
+
+    // Update is called once per frame 
+    void LateUpdate()
+    {
+        transform.LookAt(new Vector3(cameraToLookAt.transform.position.x, transform.position.y, cameraToLookAt.transform.position.z));
+         
+
+    }
+
 }

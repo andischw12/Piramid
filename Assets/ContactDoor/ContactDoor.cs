@@ -37,7 +37,7 @@ public class ContactDoor : MonoBehaviour
 	[Tooltip("Pair another ContactDoor object with this one and they will open/close together. Pair the other door with this one too.")]
 	public ContactDoor pairedWith = null;
 
-	[Range(0.0f,6.0f)]
+	//[Range(0.0f,6.0f)]
 	[Tooltip("How far must triggering object move away before door closes? Note that thrown objects could land nearby and hold the door open")]
 	public float rangeToClose = 3.0f;
 
@@ -49,7 +49,7 @@ public class ContactDoor : MonoBehaviour
 	[Tooltip("Maximum angle door will open to. Useful if door opens against wall.")]
 	public float maxOpenAngle = 100.0f;
 
-	[Range(0.0f,1.0f)]
+	//[Range(0.0f,1.0f)]
 	[Tooltip("Multiplier of door width, so you can have sliding doors leave some door visible when open. 0.5 = opens halfway.")]
 	public float maxSlideDist = 1.0f;
 
@@ -79,7 +79,8 @@ public class ContactDoor : MonoBehaviour
 	private float 	targetOpen = 0.0f;
 	private float	openness = 0.0f;
 	private Transform thingThatTriggeredOpen;
-
+	public bool AutoClose;
+	public bool isOpen;
 	void Start ()
 	{
 		baseEulers		= transform.localEulerAngles;	// Store door's default position + orientation (assumed to be the closed state)
@@ -269,6 +270,7 @@ public class ContactDoor : MonoBehaviour
 	// Exposed so you can manually control door from script
 	public void Open( bool clockwise )
 	{
+		 
 		// Trigger opening SFX if the door was previously closed
 		if (targetOpen == 0.0f)
 		{
@@ -293,11 +295,15 @@ public class ContactDoor : MonoBehaviour
 			targetOpen = 1.0f;
 		else
 			targetOpen = -1.0f;
+		 
+		 
 	}
 
 	// Exposed so you can manually control door from script
 	public void Close()
 	{
+		if (!AutoClose)
+			return;
 		Debug.Log("Door close, targetOpen = " + targetOpen);		// Commented out to declutter log, but left here in case you need it
 
 		// Trigger closing SFX if the door was previously open
@@ -321,6 +327,7 @@ public class ContactDoor : MonoBehaviour
 
 		targetOpen = 0.0f;
 		thingThatTriggeredOpen = null;
+		 
 	}
 
 	public bool IsLocked()

@@ -1,0 +1,610 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3146027170325909864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3146027170325909871}
+  m_Layer: 0
+  m_Name: Physical_Notes_Raycast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3146027170325909871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027170325909864}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.095, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3146027170627873772}
+  - {fileID: 3146027172310976042}
+  - {fileID: 3146027172074827747}
+  - {fileID: 3146027171539880801}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3146027170971110608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3146027172074827747}
+  - component: {fileID: 3146027170971110571}
+  - component: {fileID: 3146027170971110612}
+  - component: {fileID: 3146027170971110613}
+  - component: {fileID: 3146027170971110614}
+  - component: {fileID: 3146027170971110615}
+  m_Layer: 9
+  m_Name: CustomNote_Yellow
+  m_TagString: Note
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3146027172074827747
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027170971110608}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.687, y: 0.751, z: -2.13}
+  m_LocalScale: {x: 0.55929, y: 0.023559999, z: 0.45472}
+  m_Children: []
+  m_Father: {fileID: 3146027170325909871}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3146027170971110571
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027170971110608}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &3146027170971110612
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027170971110608}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &3146027170971110613
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027170971110608}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 2f588df034def4441bf3465c0fbc67e6, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &3146027170971110614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027170971110608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7429e1f2a56cae546a8b8b2218c22a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NoteType: 3
+--- !u!114 &3146027170971110615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027170971110608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e75c414a9c17440be732db84aba36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isReadable: 1
+  pageImage: {fileID: 21300000, guid: 817357d073873ea439bbfc8c54c3b3a1, type: 3}
+  pageScale: {x: 900, y: 900}
+  hasMultPages: 1
+  noteText:
+  - "Page 1 - Oddly enough the power seemed to be on at the school, very strange indeed.
+    I managed to find the button that opens the main school gate, this place is really
+    strange, eerie, hard to believe that this was once a fully functioning boarding
+    school.\x03\rThe Main Entrance was locked, I stumbled upon a set of keys in the
+    security cabin, I guess these might open that side door. It\u2019s probably just
+    in my head but I could have sworn someone is following me; it will be that janitor\u2026
+    HA!"
+  - "Page 2 - Oddly enough the power seemed to be on at the school, very strange indeed.
+    I managed to find the button that opens the main school gate, this place is really
+    strange, eerie, hard to believe that this was once a fully functioning boarding
+    school.\x03\rThe Main Entrance was locked, I stumbled upon a set of keys in the
+    security cabin, I guess these might open that side door. It\u2019s probably just
+    in my head but I could have sworn someone is following me; it will be that janitor\u2026
+    HA!"
+  - "Page 3 - Oddly enough the power seemed to be on at the school, very strange indeed.
+    I managed to find the button that opens the main school gate, this place is really
+    strange, eerie, hard to believe that this was once a fully functioning boarding
+    school.\x03\rThe Main Entrance was locked, I stumbled upon a set of keys in the
+    security cabin, I guess these might open that side door. It\u2019s probably just
+    in my head but I could have sworn someone is following me; it will be that janitor\u2026
+    HA!"
+  noteTextAreaScale: {x: 495, y: 795}
+  textSize: 25
+  fontType: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  fontStyle: 0
+  fontColor: {r: 0, g: 0, b: 0, a: 1}
+  allowAudioPlayback: 1
+  playOnOpen: 1
+  noteAudio: LetterAudio1
+  noteFlipAudio: NoteOpen
+  isNoteTrigger: 0
+  triggerObject: {fileID: 0}
+--- !u!1 &3146027171433917752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3146027170627873772}
+  - component: {fileID: 3146027171433917747}
+  - component: {fileID: 3146027171433917756}
+  - component: {fileID: 3146027171433917757}
+  - component: {fileID: 3146027171433917758}
+  - component: {fileID: 3146027171433917759}
+  m_Layer: 9
+  m_Name: BasicNote_Green
+  m_TagString: Note
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3146027170627873772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027171433917752}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.687, y: 0.751, z: -6.62}
+  m_LocalScale: {x: 0.5592937, y: 0.02356023, z: 0.4547169}
+  m_Children: []
+  m_Father: {fileID: 3146027170325909871}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3146027171433917747
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027171433917752}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &3146027171433917756
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027171433917752}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &3146027171433917757
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027171433917752}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 108ee79a5c09a754bb69fe9ec515725a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &3146027171433917758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027171433917752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7429e1f2a56cae546a8b8b2218c22a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NoteType: 1
+--- !u!114 &3146027171433917759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027171433917752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eae45096dd0279845bf10ea172ab13a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isReadable: 1
+  pageScale: {x: 900, y: 900}
+  hasMultPages: 1
+  pageImages:
+  - {fileID: 21300000, guid: b8ab61eb8f91e1244a69071796f076dd, type: 3}
+  - {fileID: 21300000, guid: ad24ebe87cc9a0b4fb31fc29ecade5e0, type: 3}
+  - {fileID: 21300000, guid: e8ff3bf23f4739342a79acbf4b893c17, type: 3}
+  - {fileID: 21300000, guid: b8ab61eb8f91e1244a69071796f076dd, type: 3}
+  - {fileID: 21300000, guid: ad24ebe87cc9a0b4fb31fc29ecade5e0, type: 3}
+  allowAudioPlayback: 1
+  playOnOpen: 1
+  noteAudioName: LetterAudio1
+  noteFlipAudio: NoteOpen
+  isNoteTrigger: 0
+  triggerObject: {fileID: 0}
+--- !u!1 &3146027172198470611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3146027171539880801}
+  - component: {fileID: 3146027172198470614}
+  - component: {fileID: 3146027172198470615}
+  - component: {fileID: 3146027172198470608}
+  - component: {fileID: 3146027172198470609}
+  - component: {fileID: 3146027172198470610}
+  m_Layer: 9
+  m_Name: CustomReverseNote_Blue
+  m_TagString: Note
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3146027171539880801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027172198470611}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.7191043, y: 0.751, z: 0.126}
+  m_LocalScale: {x: 0.55929, y: 0.023559999, z: 0.45472}
+  m_Children: []
+  m_Father: {fileID: 3146027170325909871}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3146027172198470614
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027172198470611}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3146027172198470615
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027172198470611}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 22c1dfed0d5fe3e47a401e7b663aa664, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &3146027172198470608
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027172198470611}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.99999994, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3146027172198470609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027172198470611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7429e1f2a56cae546a8b8b2218c22a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NoteType: 4
+--- !u!114 &3146027172198470610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027172198470611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f64fb6f9119f024db125a41528f2498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isReadable: 1
+  pageImage: {fileID: 21300000, guid: 0c937bc4d209ea8479e01cb36119d5a5, type: 3}
+  pageScale: {x: 900, y: 900}
+  hasMultPages: 1
+  noteReverseText:
+  - Page 1 - Test
+  - Page 2 - Test
+  - Page 3 - Test
+  - Page 4 - Test
+  mainTextAreaScale: {x: 495, y: 795}
+  mainTextSize: 25
+  mainFontType: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  mainFontStyle: 0
+  mainFontColor: {r: 0, g: 0, b: 0, a: 1}
+  noteTextBGColor: {r: 1, g: 1, b: 1, a: 1}
+  flipTextSize: 25
+  flipFontType: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  flipFontStyle: 0
+  flipTextAreaScale: {x: 1045, y: 300}
+  flipTextBGScale: {x: 1160, y: 300}
+  flipFontColor: {r: 0, g: 0, b: 0, a: 1}
+  allowAudioPlayback: 1
+  playOnOpen: 1
+  noteAudio: LetterAudio1
+  noteFlipAudio: NoteOpen
+  isNoteTrigger: 0
+  triggerObject: {fileID: 0}
+--- !u!1 &3146027172199223303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3146027172310976042}
+  - component: {fileID: 3146027172199223322}
+  - component: {fileID: 3146027172199223323}
+  - component: {fileID: 3146027172199223300}
+  - component: {fileID: 3146027172199223301}
+  - component: {fileID: 3146027172199223302}
+  m_Layer: 9
+  m_Name: ReverseNote_Red
+  m_TagString: Note
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3146027172310976042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027172199223303}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.687, y: 0.751, z: -4.38}
+  m_LocalScale: {x: 0.5592937, y: 0.02356023, z: 0.4547169}
+  m_Children: []
+  m_Father: {fileID: 3146027170325909871}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3146027172199223322
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027172199223303}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3146027172199223323
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027172199223303}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9537fd80f66092e4f99a429d4224a31e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &3146027172199223300
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027172199223303}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.99999994, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3146027172199223301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027172199223303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7429e1f2a56cae546a8b8b2218c22a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NoteType: 2
+--- !u!114 &3146027172199223302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146027172199223303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6982962bff63d5349b77acb8a259ed98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isReadable: 1
+  pageScale: {x: 900, y: 900}
+  hasMultPages: 1
+  notePageImages:
+  - {fileID: 21300000, guid: b8ab61eb8f91e1244a69071796f076dd, type: 3}
+  - {fileID: 21300000, guid: ad24ebe87cc9a0b4fb31fc29ecade5e0, type: 3}
+  noteReverseText:
+  - "This is page 1 of your note!\t"
+  - This is page two of your note!
+  noteTextAreaScale: {x: 1045, y: 300}
+  customTextBGScale: {x: 1160, y: 300}
+  customTextBGColor: {r: 1, g: 1, b: 1, a: 1}
+  textSize: 25
+  fontType: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  fontStyle: 0
+  fontColor: {r: 0, g: 0, b: 0, a: 1}
+  isNoteActive: 0
+  allowAudioPlayback: 0
+  playOnOpen: 0
+  noteAudio: LetterAudio1
+  noteFlipAudio: NoteOpen
+  isNoteTrigger: 0
+  triggerObject: {fileID: 0}

@@ -48,7 +48,7 @@ namespace DiasGames.ThirdPersonSystem
             m_TransitionDuration = 0.2f;
             m_FinishOnAnimationEnd = false;
             m_UseRootMotion = true;
-            m_AllowCameraZoom = true;
+            m_AllowCameraZoom = false;
         }
     }
 }

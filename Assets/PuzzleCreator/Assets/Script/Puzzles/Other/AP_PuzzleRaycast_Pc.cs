@@ -80,11 +80,12 @@ public class AP_PuzzleRaycast_Pc : MonoBehaviour {
     void Update()
     {
         #region
-        if(!b_isPuzzleActivated)
-            b_PuzzleFind = AP_DetectPuzzle();
+        //if (!b_isPuzzleActivated) 
+            //b_PuzzleFind = AP_DetectPuzzle();
 
         if (!AP_GlobalPuzzleManager_Pc.instance.b_Pause)
         {
+           
             // Desktop
             if ((Input.GetKeyDown(GlobalPuzzleManager.validationButtonKeyboard)
                 || (AP_GlobalPuzzleManager_Pc.instance.methodsListVRValidationDown.Count > 0 && AP_GlobalPuzzleManager_Pc.instance.callMethods.Call_One_Bool_Method(AP_GlobalPuzzleManager_Pc.instance.methodsListVRValidationDown, 0))
@@ -95,10 +96,12 @@ public class AP_PuzzleRaycast_Pc : MonoBehaviour {
                GlobalPuzzleManager.b_DesktopInputs
                )
             {
+                print("here");
                 // Puzzle can be activated
                 if (currentPuzzle.accessPuzzle.ReturnIfAllTheConditionsReturnTrue())
                 { 
                     AP_ActivatePuzzle();
+                   
                 }
                 // Puzzle can't be activated
                 else
@@ -152,6 +155,33 @@ public class AP_PuzzleRaycast_Pc : MonoBehaviour {
         #endregion
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Puzzle" && !b_isPuzzleActivated) 
+        {
+           
+            b_PuzzleFind = true;
+            other.transform.parent.GetComponentInChildren<Outline>().enabled = true;
+            currentPuzzle = other.transform.parent.GetComponentInChildren<AP_PuzzleDetector_Pc>();
+            print(currentPuzzle.transform.name);
+
+        }
+    }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Puzzle" && other.transform.parent.GetComponentInChildren<Outline>().enabled ==true)
+        {
+
+            b_PuzzleFind = false;
+            currentPuzzle = null;
+            other.transform.parent.GetComponentInChildren<Outline>().enabled = false;
+
+        }
+    }
+
+
     public bool AP_DetectPuzzle()
     {
         #region
@@ -186,6 +216,7 @@ public class AP_PuzzleRaycast_Pc : MonoBehaviour {
                     GlobalPuzzleManager.iconPuzzle = GameObject.Find("Canvas_UIPuzzle").GetComponent<AP_PlayerInfos_Pc>().iconPuzzle;
                 if (GlobalPuzzleManager.b_iconPuzzle && GlobalPuzzleManager.iconPuzzle && currentPuzzle.b_FocusActivated)
                     GlobalPuzzleManager.iconPuzzle.gameObject.SetActive(true);
+                
 
             }
 
@@ -219,6 +250,7 @@ public class AP_PuzzleRaycast_Pc : MonoBehaviour {
         if(currentPuzzle){
             b_isPuzzleActivated = true;
             currentPuzzle.Ap_ActivatePuzzle(objMainCamera);
+             
             if (GlobalPuzzleManager.reticule == null && GlobalPuzzleManager.b_AlwaysFindReticule)
                 GlobalPuzzleManager.reticule = GameObject.Find("Canvas_UIPuzzle").GetComponent<AP_PlayerInfos_Pc>().reticule;
             if (GlobalPuzzleManager.b_Reticule && GlobalPuzzleManager.reticule && currentPuzzle.b_FocusActivated) GlobalPuzzleManager.reticule.gameObject.SetActive(false);
