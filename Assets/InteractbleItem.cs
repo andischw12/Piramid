@@ -38,7 +38,7 @@ public class InteractbleItem : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+             
             if (OutLine)
                 GetComponent<Outline>().enabled = true;
             if(InfoGraphicState == InteracticState.OnCollisonEnter)
@@ -81,7 +81,7 @@ public class InteractbleItem : MonoBehaviour
 
     public void TurnItemCamOff()
     {
-        FindObjectOfType<ThirdPersonSystem>().GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
+        FindObjectOfType<ThirdPersonSystem>().GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         ItemCamera.SetActive(false);
         GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonSystem>().enabled = true;
         //actionIcon.SetActive(false);
@@ -100,9 +100,8 @@ public class InteractbleItem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            if (Input.GetMouseButtonDown(0))
+         
+            if (Input.GetMouseButtonDown(0)&&isColliding)
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -120,8 +119,8 @@ public class InteractbleItem : MonoBehaviour
 
 
 
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        
+        if (Input.GetKeyDown(KeyCode.Mouse1)&& isColliding)
             TurnItemCamOff();
     }
 }

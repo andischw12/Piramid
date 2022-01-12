@@ -70,7 +70,7 @@ namespace DiasGames.ThirdPersonSystem
         public InputButton toggleWeaponButton { get; private set; }
         public InputButton rightWeaponButton { get; private set; }
         public InputButton leftWeaponButton { get; private set; }
-        //public InputButton zoomButton { get; private set; }
+        public InputButton zoomButton { get; private set; }
         public InputButton fireButton { get; private set; }
         public InputButton reloadButton { get; private set; }
 
@@ -164,7 +164,7 @@ namespace DiasGames.ThirdPersonSystem
             leftWeaponButton = new InputButton(m_LeftWeaponInputName);
             fireButton = new InputButton(m_FireInputName);
             reloadButton = new InputButton(m_ReloadInputName);
-            //zoomButton = new InputButton(m_ZoomInputName);
+            zoomButton = new InputButton(m_ZoomInputName);
 
             interactButton = new InputButton(m_InteractInputName);
 
@@ -180,21 +180,28 @@ namespace DiasGames.ThirdPersonSystem
                 m_Move.x = Input.GetAxis("Horizontal");
                 m_Move.y = Input.GetAxis("Vertical");
 
-               // m_ScrollView.x = Input.GetAxis("Mouse X");
-                //m_ScrollView.y = Input.GetAxis("Mouse Y");
+                m_ScrollView.x = Input.GetAxis("Mouse X");
+                m_ScrollView.y = Input.GetAxis("Mouse Y");
             }
-            
+
             // calculate camera relative direction to move:
             Vector3 CamForward = Vector3.Scale(m_Camera.forward, new Vector3(1, 0, 1)).normalized;
             m_RelativeInput = m_Move.y * CamForward + m_Move.x * m_Camera.right;
-           
+
         }
 
         private void Update()
         {
             HandleCursorVisibility();
 
-          
+            foreach (CinemachineFreeLook freeLook in m_FreeLookCameras)
+            {
+                if (freeLook.IsValid)
+                {
+                    freeLook.m_XAxis.m_InputAxisValue = m_ScrollView.x;
+                    freeLook.m_YAxis.m_InputAxisValue = m_ScrollView.y;
+                }
+            }
 
             if (manualUpdate)
                 return;
@@ -211,7 +218,7 @@ namespace DiasGames.ThirdPersonSystem
             leftWeaponButton.Update();
             fireButton.Update();
             reloadButton.Update();
-            //zoomButton.Update();
+            zoomButton.Update();
             interactButton.Update();
 
             action01.Update();
@@ -279,7 +286,7 @@ namespace DiasGames.ThirdPersonSystem
                 case InputReference.LeftWeapon:
                     return leftWeaponButton;
                 case InputReference.Zoom:
-                  //  return zoomButton;
+                    return zoomButton;
                 case InputReference.Fire:
                     return fireButton;
                 case InputReference.Reload:

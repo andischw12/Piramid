@@ -90,15 +90,11 @@ namespace DiasGames.ThirdPersonSystem
         /// <param name="power"></param>
         public void DoJump(float power)
         {
-                 print("Hey");
             // Change parameters to allow jumping
             m_System.GroundCheckDistance = 0.01f;
             m_System.IsGrounded = false;
 
-            // Start andy edit
-            //Vector3 direction = m_InputManager.RelativeInput.normalized;// andy fix jump direction:
-            Vector3 direction = transform.forward; 
-            //end andy edit
+            Vector3 direction = m_InputManager.RelativeInput.normalized;
             Vector3 velocity = direction * m_MaxHorSpeed + Vector3.up * power;
 
             m_System.m_Rigidbody.velocity = velocity;

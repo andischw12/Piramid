@@ -25,7 +25,6 @@ namespace DiasGames.ThirdPersonSystem
                        
             m_System.CalculateMoveVars();
             m_System.UpdateMovementAnimator(0.1f);
-            
             m_System.RotateToDirection();
         }
 
@@ -48,7 +47,7 @@ namespace DiasGames.ThirdPersonSystem
             m_TransitionDuration = 0.2f;
             m_FinishOnAnimationEnd = false;
             m_UseRootMotion = true;
-            m_AllowCameraZoom = false;
+            m_AllowCameraZoom = true;
         }
     }
 }
