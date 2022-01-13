@@ -190,6 +190,7 @@ public class AP_PuzzleDetector_Pc : MonoBehaviour {
         }
         #endregion
     }
+ 
 
 
     public void OnTriggerEnter(Collider other)

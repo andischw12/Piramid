@@ -20,6 +20,8 @@ public class NotesManager : MonoBehaviour
 
     public void ShowNote(int num) 
     {
+        if (UserNotificationManager.instance.Notifications[2].counter < 1)
+            UserNotificationManager.instance.ShowNotification(2);
         Background.SetActive(true);
         Letters[num].SetActive(true);
         GameManager.instance.AcceptPlayerInput = false;
@@ -34,7 +36,7 @@ public class NotesManager : MonoBehaviour
         GameManager.instance.AcceptPlayerInput = true;
         CinemachineBrain.SoloCamera = null;
         GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-        try { currentNote.HostingItem.SecondaryAction.Invoke(); } catch { }//close
+        try { currentNote.HostingItem.SecondaryAction.Invoke(); } catch { }//invoke the closing action of hosting item object
         foreach (GameObject gm in Letters) 
         {
             gm.gameObject.SetActive(false);

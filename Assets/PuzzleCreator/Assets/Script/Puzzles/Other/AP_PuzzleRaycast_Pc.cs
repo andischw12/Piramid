@@ -155,7 +155,7 @@ public class AP_PuzzleRaycast_Pc : MonoBehaviour {
         #endregion
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Puzzle" && !b_isPuzzleActivated) 
         {

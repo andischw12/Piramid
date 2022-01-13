@@ -39,7 +39,8 @@ public class InteractbleItem : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-             
+            if(UserNotificationManager.instance.Notifications[0].counter<2)
+                UserNotificationManager.instance.ShowNotification(0);
             if (OutLine)
                 GetComponent<Outline>().enabled = true;
             if(InfoGraphicState == InteracticState.OnCollisonEnter)
@@ -59,7 +60,7 @@ public class InteractbleItem : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            
+             
             if (OutLine)
                 GetComponent<Outline>().enabled = false;
             InfoGraphic.SetActive(false);
@@ -76,7 +77,10 @@ public class InteractbleItem : MonoBehaviour
     {
         if (OutLine)
             GetComponent<Outline>().enabled = false;
-        FindObjectOfType<ThirdPersonSystem>().GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        if (UserNotificationManager.instance.Notifications[1].counter < 1)
+            UserNotificationManager.instance.ShowNotification(1);
+
+            FindObjectOfType<ThirdPersonSystem>().GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         ItemCamera.SetActive(true);
         CinemachineBrain.SoloCamera = ItemCamera.GetComponent<CinemachineVirtualCamera>();
        // GameManager.instance.AcceptPlayerInput = false;
@@ -112,7 +116,7 @@ public class InteractbleItem : MonoBehaviour
     private void FixedUpdate()
     {
          
-            if (isColliding && GameManager.instance.AcceptPlayerInput&& Input.GetMouseButtonDown(0))
+            if (isColliding && GameManager.instance.AcceptPlayerInput&& (Input.GetMouseButtonDown(0)||Input.GetButton("Interact")))
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -131,7 +135,7 @@ public class InteractbleItem : MonoBehaviour
 
 
 
-        if (isColliding && GameManager.instance.AcceptPlayerInput&& Input.GetKeyDown(KeyCode.Mouse1)) 
+        if (isColliding && GameManager.instance.AcceptPlayerInput&& (Input.GetKeyDown(KeyCode.Mouse1)||Input.GetKeyDown(KeyCode.Escape))) 
         {
             TurnItemCamOff();
             if(SecondaryActionState == InteracticState.RightMouseClick)
