@@ -260,8 +260,13 @@ namespace DiasGames.ThirdPersonSystem
         public void CalculateMoveVars()
         {
            float m_TurnAmountCpy = Mathf.Atan2(FreeMoveDirection.x, FreeMoveDirection.z);
-            if (!IsGrounded)
+            if (!IsGrounded) 
+            {
+                
                 return;
+                
+            }
+                
 
             Vector3 m_StrafeDirection = InputManager.RelativeInput;
 

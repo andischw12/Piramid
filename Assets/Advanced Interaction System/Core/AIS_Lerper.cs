@@ -90,7 +90,7 @@ public class AIS_Lerper : MonoBehaviour
 		//lerp!
 		perc = currentLerpTime / lerpTime;
 		Quatperc = currentLerpTime / QuatLerpTime;
-
+		GameManager.instance.AcceptPlayerInput = false;
 		if (!ShouldStopLerp)
 			transform.position = Vector3.Lerp (transform.position, EndPos.position + new Vector3(XOffset, YOffset, ZOffset), perc);
 
@@ -99,7 +99,9 @@ public class AIS_Lerper : MonoBehaviour
 			transform.rotation = Quaternion.Lerp (transform.rotation, EndPos.rotation * Quaternion.Euler(XOffsetQuart, YOffsetQuart, ZOffsetQuart), Quatperc);
 
 		//if distance between two goals of lerp is smaller than threshold then stop lerp
-		if (Vector3.Distance (transform.position, EndPos.position) <= 0.01f){
+		if (Vector3.Distance (transform.position, EndPos.position) <= 0.01f)
+		{
+			GameManager.instance.AcceptPlayerInput =true;
 			ShouldStopLerp = true;
 			//if rotation lerping is enabled
 			if (LerpRotation) {

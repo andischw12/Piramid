@@ -8,6 +8,7 @@ public class NotesManager : MonoBehaviour
     [SerializeField] public GameObject Background;
     [SerializeField] public GameObject[] Letters;
     [SerializeField] Camera[] cameras;
+    NoteItem currentNote;
      
     // Start is called before the first frame update
 
@@ -21,18 +22,19 @@ public class NotesManager : MonoBehaviour
     {
         Background.SetActive(true);
         Letters[num].SetActive(true);
-        Time.timeScale = 0;
-        
+        GameManager.instance.AcceptPlayerInput = false;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
     }
 
 
     public void HideNotes()
     {
         Background.SetActive(false);
-        Time.timeScale = 1;
+        GameManager.instance.AcceptPlayerInput = true;
         CinemachineBrain.SoloCamera = null;
         GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-
+        try { currentNote.HostingItem.SecondaryAction.Invoke(); } catch { }//close
         foreach (GameObject gm in Letters) 
         {
             gm.gameObject.SetActive(false);
@@ -57,7 +59,9 @@ public class NotesManager : MonoBehaviour
             {
                 if (hit.transform.tag == "Note")
                 {
-                    ShowNote(0);
+                    
+                    currentNote = hit.transform.GetComponent<NoteItem>();
+                    ShowNote(currentNote.NoteNumber);
                 }
                 Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
             }

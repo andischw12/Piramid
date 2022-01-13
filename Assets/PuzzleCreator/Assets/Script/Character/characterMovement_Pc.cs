@@ -12,7 +12,7 @@ public class characterMovement_Pc : MonoBehaviour {
 	public Transform 			tangentStartPosition;
 	public Transform			objCamera;					// Reference to the camera
 	public GameObject 			addForceObj;				// Position where forces is add to the character
-    public Transform            refHead;                    // use for focus camera in inGameGloabalManager in the Hierarchy
+    public Transform            refHead;                    // cus camera in inGameGloabalManager in the Hierarchy
 
 	private string 				s_mouseAxisX 		= "Mouse X";				// Default Mouse Inputs
 	private string 				s_mouseAxisY 		= "Mouse Y";

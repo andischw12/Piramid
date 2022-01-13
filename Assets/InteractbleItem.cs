@@ -79,6 +79,8 @@ public class InteractbleItem : MonoBehaviour
         FindObjectOfType<ThirdPersonSystem>().GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         ItemCamera.SetActive(true);
         CinemachineBrain.SoloCamera = ItemCamera.GetComponent<CinemachineVirtualCamera>();
+       // GameManager.instance.AcceptPlayerInput = false;
+
         //GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonSystem>().enabled = false;
         print("look button was click");
     }
@@ -88,6 +90,8 @@ public class InteractbleItem : MonoBehaviour
         if (isColliding && OutLine)
             GetComponent<Outline>().enabled = true;
         FindObjectOfType<ThirdPersonSystem>().GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        //GameManager.instance.AcceptPlayerInput = true;
+
         ItemCamera.SetActive(false);
         CinemachineBrain.SoloCamera = null;
        // GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonSystem>().enabled = true;
@@ -108,7 +112,7 @@ public class InteractbleItem : MonoBehaviour
     private void FixedUpdate()
     {
          
-            if (isColliding && Input.GetMouseButtonDown(0))
+            if (isColliding && GameManager.instance.AcceptPlayerInput&& Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -127,7 +131,7 @@ public class InteractbleItem : MonoBehaviour
 
 
 
-        if (isColliding && Input.GetKeyDown(KeyCode.Mouse1)) 
+        if (isColliding && GameManager.instance.AcceptPlayerInput&& Input.GetKeyDown(KeyCode.Mouse1)) 
         {
             TurnItemCamOff();
             if(SecondaryActionState == InteracticState.RightMouseClick)
