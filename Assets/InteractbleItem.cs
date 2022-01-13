@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using DiasGames.ThirdPersonSystem;
-using Cinemachine;
 
 public class InteractbleItem : MonoBehaviour
 {
-    enum InteracticState {Off,OnCollisonEnter,LeftMouseClick,OnCollisonExit,RightMouseClick};
+    enum InteracticState {Off,OnCollisonEnter,MouseClick};
     [SerializeField] GameObject ItemCamera, InfoGraphic;
-    [SerializeField] bool OutLine;
-    [SerializeField] InteracticState CameraState,MainActionState,InfoGraphicState,SecondaryActionState;
+    [SerializeField] bool OutLine,_ActionOnCollisonExit;//,ActionOnclick,CameraOnClick;
+    [SerializeField] InteracticState CameraState,ActionState,InfoGraphicState;
     [SerializeField] public float timeBetweenCamAndAcation;
-    public UnityEvent MainAction,SecondaryAction;
+    public UnityEvent MainAction,ActionOnExit;
     
     bool isColliding;
 
@@ -24,13 +23,13 @@ public class InteractbleItem : MonoBehaviour
         if (OutLine) 
         {
             gameObject.AddComponent<Outline>();
-            GetComponent<Outline>().OutlineColor = new Color32(255,145,0,150);  
+            GetComponent<Outline>().OutlineColor = new Color32(255,145,0,255);  
             GetComponent<Outline>().OutlineWidth = 5;
             GetComponent<Outline>().OutlineMode = Outline.Mode.OutlineVisible;
             GetComponent<Outline>().enabled = false;
         }
         InfoGraphic.SetActive(false);
-        ItemCamera.SetActive(false);
+
            
     }
 
@@ -44,11 +43,11 @@ public class InteractbleItem : MonoBehaviour
                 GetComponent<Outline>().enabled = true;
             if(InfoGraphicState == InteracticState.OnCollisonEnter)
                 InfoGraphic.SetActive(true);
-            if (CameraState == InteracticState.OnCollisonEnter && MainActionState == InteracticState.OnCollisonEnter)
+            if (CameraState == InteracticState.OnCollisonEnter && ActionState == InteracticState.OnCollisonEnter)
                 StartCoroutine(CamAndAction());
             else if (CameraState == InteracticState.OnCollisonEnter)
                 ItemCamera.SetActive(true);
-            else if (MainActionState == InteracticState.OnCollisonEnter)
+            else if (ActionState == InteracticState.OnCollisonEnter)
                 MainAction.Invoke();
             isColliding = true;
         }
@@ -63,10 +62,10 @@ public class InteractbleItem : MonoBehaviour
             if (OutLine)
                 GetComponent<Outline>().enabled = false;
             InfoGraphic.SetActive(false);
-            
-            if(SecondaryActionState == InteracticState.OnCollisonExit)
-                SecondaryAction.Invoke();
             isColliding = false;
+            if(_ActionOnCollisonExit)
+                ActionOnExit.Invoke();
+
         }
     }
 
@@ -74,23 +73,17 @@ public class InteractbleItem : MonoBehaviour
 
     public void TurnItemCamOn()
     {
-        if (OutLine)
-            GetComponent<Outline>().enabled = false;
         FindObjectOfType<ThirdPersonSystem>().GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         ItemCamera.SetActive(true);
-        CinemachineBrain.SoloCamera = ItemCamera.GetComponent<CinemachineVirtualCamera>();
-        //GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonSystem>().enabled = false;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonSystem>().enabled = false;
         print("look button was click");
     }
 
     public void TurnItemCamOff()
     {
-        if (isColliding && OutLine)
-            GetComponent<Outline>().enabled = true;
         FindObjectOfType<ThirdPersonSystem>().GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         ItemCamera.SetActive(false);
-        CinemachineBrain.SoloCamera = null;
-       // GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonSystem>().enabled = true;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonSystem>().enabled = true;
         //actionIcon.SetActive(false);
     }
 
@@ -100,15 +93,15 @@ public class InteractbleItem : MonoBehaviour
         //if(CameraState == InteracticState.MouseClick)
             TurnItemCamOn();
         yield return new WaitForSeconds(timeBetweenCamAndAcation);
-        if(MainActionState != InteracticState.Off)
+       // if(ActionState == InteracticState.MouseClick)
             MainAction.Invoke();
     }
 
 
-    private void FixedUpdate()
+    private void Update()
     {
          
-            if (isColliding && Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0)&&isColliding)
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -126,13 +119,8 @@ public class InteractbleItem : MonoBehaviour
 
 
 
-
-        if (isColliding && Input.GetKeyDown(KeyCode.Mouse1)) 
-        {
+        
+        if (Input.GetKeyDown(KeyCode.Mouse1)&& isColliding)
             TurnItemCamOff();
-            if(SecondaryActionState == InteracticState.RightMouseClick)
-                SecondaryAction.Invoke();
-        }
-            
     }
 }
