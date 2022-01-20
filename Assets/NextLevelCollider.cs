@@ -17,6 +17,6 @@ public class NextLevelCollider : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
-            Initiate.Fade(nextSceneName, Color.black, 1f);
+            GameManager.instance.LoadLevel(GameManager.LoadLevelOptions.NextLevel);
     }
 }

@@ -9,7 +9,7 @@ public class InteractbleItem : MonoBehaviour
 {
     enum InteracticState {Off,OnCollisonEnter,LeftMouseClick,OnCollisonExit,RightMouseClick};
     [SerializeField] GameObject ItemCamera, InfoGraphic;
-    [SerializeField] bool OutLine;
+    [SerializeField] public bool OutLine, isLocked;
     [SerializeField] InteracticState CameraState,MainActionState,InfoGraphicState,SecondaryActionState;
     [SerializeField] public float timeBetweenCamAndAcation;
     public UnityEvent MainAction,SecondaryAction;
@@ -124,8 +124,12 @@ public class InteractbleItem : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, 100.0f,mask))
                 {
-                    if (hit.transform.tag == "ItemIcon")
+                    if (hit.transform.tag == "InteractableItem")
                     {
+                        if (isLocked) 
+                        {
+                            return;
+                        }
                         StartCoroutine(CamAndAction());
                     }
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
@@ -137,10 +141,17 @@ public class InteractbleItem : MonoBehaviour
 
         if (isColliding && GameManager.instance.AcceptPlayerInput&& (Input.GetKeyDown(KeyCode.Mouse1)||Input.GetKeyDown(KeyCode.Escape))) 
         {
-            TurnItemCamOff();
-            if(SecondaryActionState == InteracticState.RightMouseClick)
-                SecondaryAction.Invoke();
+            ExitFromObject();
         }
             
     }
+
+
+    public void ExitFromObject() 
+    {
+        TurnItemCamOff();
+        if (SecondaryActionState == InteracticState.RightMouseClick)
+            SecondaryAction.Invoke();
+    }
+
 }

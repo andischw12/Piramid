@@ -25,7 +25,7 @@ public class NotesManager : MonoBehaviour
         Background.SetActive(true);
         Letters[num].SetActive(true);
         GameManager.instance.AcceptPlayerInput = false;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        //GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
     }
 
@@ -33,14 +33,11 @@ public class NotesManager : MonoBehaviour
     public void HideNotes()
     {
         Background.SetActive(false);
-        GameManager.instance.AcceptPlayerInput = true;
-        CinemachineBrain.SoloCamera = null;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-        try { currentNote.HostingItem.SecondaryAction.Invoke(); } catch { }//invoke the closing action of hosting item object
         foreach (GameObject gm in Letters) 
         {
             gm.gameObject.SetActive(false);
         }
+        try { currentNote.HostingItem.ExitFromObject(); }catch{ }
     }
 
     private void Update()
