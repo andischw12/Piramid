@@ -127,11 +127,11 @@ public class InteractbleItem : MonoBehaviour
                 {
                     if (hit.transform.tag == "InteractableItem")
                     {
-                        if (isLocked && !InventoryManager.instance.CheckItem(KeyNeeded)) 
+                        if (isLocked && !InventoryManager.instance.CheckIfGotItem(KeyNeeded)) 
                         {
                             return;
                         }
-                        if (isLocked && InventoryManager.instance.CheckItem(KeyNeeded)) 
+                        if (isLocked && InventoryManager.instance.CheckIfGotItem(KeyNeeded)) 
                         {
                             InventoryManager.instance.RemoveItem(KeyNeeded);
                             isLocked = false;

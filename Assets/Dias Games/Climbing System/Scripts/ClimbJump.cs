@@ -744,7 +744,7 @@ namespace DiasGames.ThirdPersonSystem.ClimbingSystem
         private void LaunchCharacter(Vector3 m_JumpDirectionVector, Vector3 GrabPosition, float LinecastStart, Collider ignoreCollider = null)
         {
             Vector3 offset = Vector3.zero;      // Start without offset
-
+            print("is jumping");
             JumpParameters parameter = new JumpParameters();
 
             // Choose jump parameters based on Jump Type

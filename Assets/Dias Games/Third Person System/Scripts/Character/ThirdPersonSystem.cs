@@ -282,7 +282,7 @@ namespace DiasGames.ThirdPersonSystem
             if(Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.X))
             {
                 JustStopWalkingBack = true;
-                m_TurnAmount = m_TurnAmountCpy;
+                //m_TurnAmount = m_TurnAmountCpy;
                 Invoke("ChangeFlag", 0.2f);
             }
 
@@ -572,7 +572,7 @@ namespace DiasGames.ThirdPersonSystem
             {
                 Vector3 Origin = transform.position + Vector3.up;
 
-                if (Physics.SphereCast(Origin, m_Capsule.radius, Vector3.down, out m_GroundHit, 2f + m_GroundCheckDistance, m_GroundMask, QueryTriggerInteraction.Ignore))
+                if (Physics.SphereCast(Origin, m_Capsule.radius*0.5f/*Andy double by 0.5 to solve not finding ground */, Vector3.down, out m_GroundHit, 2f + m_GroundCheckDistance, m_GroundMask, QueryTriggerInteraction.Ignore))
                 {
                     float distance = transform.position.y - m_GroundHit.point.y;
 

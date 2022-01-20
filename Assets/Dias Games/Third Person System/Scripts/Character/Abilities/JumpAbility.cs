@@ -76,6 +76,7 @@ namespace DiasGames.ThirdPersonSystem
         /// </summary>
         public void AddVelocityToJump()
         {
+          
             Vector3 vel = transform.forward * m_MaxHorSpeed; // Set velocity vector
             vel.y = m_System.m_Rigidbody.velocity.y; // Kepp vertical speed
 
@@ -90,11 +91,13 @@ namespace DiasGames.ThirdPersonSystem
         /// <param name="power"></param>
         public void DoJump(float power)
         {
+            print("jump");
             // Change parameters to allow jumping
             m_System.GroundCheckDistance = 0.01f;
             m_System.IsGrounded = false;
 
-            Vector3 direction = m_InputManager.RelativeInput.normalized;
+            Vector3 direction = transform.forward;
+
             Vector3 velocity = direction * m_MaxHorSpeed + Vector3.up * power;
 
             m_System.m_Rigidbody.velocity = velocity;

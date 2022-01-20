@@ -22,7 +22,7 @@ namespace DiasGames.ThirdPersonSystem
         
         public override bool TryEnterAbility()
         {
-            return (!m_System.IsGrounded && m_System.m_Rigidbody.velocity.y < 0f); // Only fall if velocity in y is lower than 0
+            return (!m_System.IsGrounded && m_System.m_Rigidbody.velocity.y < -1f); // Only fall if velocity in y is lower than 0
         }
 
         public override void OnEnterAbility()
@@ -38,6 +38,7 @@ namespace DiasGames.ThirdPersonSystem
             // Only finish when character found a ground
             if (m_System.IsGrounded)
             {
+                
                 if (height >= m_HeightToHardLand) // Check hard land
                 {
                     SetState(m_HardLandState, 0.05f); // Set hard land

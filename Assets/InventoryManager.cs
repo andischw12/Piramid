@@ -27,6 +27,7 @@ public class InventoryManager : MonoBehaviour
     {
         GuiInventoryArr = GetComponentsInChildren<InventoryItem>();
         HideAll();
+         
     }
     public void LoadInventory() 
     {
@@ -39,28 +40,35 @@ public class InventoryManager : MonoBehaviour
         {
              gm.gameObject.SetActive(false);
         }
+        ShowOrHideInventory();
+
     }
 
     public void AddItem(InventoryItems i) 
     {
+
+        
         foreach(InventoryItem gm in GuiInventoryArr) 
         {
             if (gm.item == i)
                 gm.gameObject.SetActive(true);
         }
+        ShowOrHideInventory();
     }
 
 
     public void RemoveItem(InventoryItems i) 
     {
+        
         foreach (InventoryItem gm in GuiInventoryArr)
         {
             if (gm.item == i)
                 gm.gameObject.SetActive(false);
         }
+        ShowOrHideInventory();
     }
 
-    public bool CheckItem(InventoryItems i) 
+    public bool CheckIfGotItem(InventoryItems i) 
     {
         foreach (InventoryItem gm in GuiInventoryArr)
         {
@@ -68,6 +76,18 @@ public class InventoryManager : MonoBehaviour
                 return true;
         }
         return false;
+    }
+    //Show or Hide Invetory 
+    void ShowOrHideInventory() 
+    {
+        int count = 0;
+        foreach (InventoryItem gm in GuiInventoryArr)
+        if(gm.gameObject.activeInHierarchy)
+                count++;
+        if (count == 0 && GetComponent<Animator>().GetBool("Show"))
+            GetComponent<Animator>().SetBool("Show", false);
+        else if(count>0 && !GetComponent<Animator>().GetBool("Show"))
+            GetComponent<Animator>().SetBool("Show", true);
     }
 
 
