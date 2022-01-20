@@ -10,6 +10,7 @@ public class InteractbleItem : MonoBehaviour
     enum InteracticState {Off,OnCollisonEnter,LeftMouseClick,OnCollisonExit,RightMouseClick};
     [SerializeField] GameObject ItemCamera, InfoGraphic;
     [SerializeField] public bool OutLine, isLocked;
+    [SerializeField] InventoryItems KeyNeeded;
     [SerializeField] InteracticState CameraState,MainActionState,InfoGraphicState,SecondaryActionState;
     [SerializeField] public float timeBetweenCamAndAcation;
     public UnityEvent MainAction,SecondaryAction;
@@ -126,10 +127,16 @@ public class InteractbleItem : MonoBehaviour
                 {
                     if (hit.transform.tag == "InteractableItem")
                     {
-                        if (isLocked) 
+                        if (isLocked && !InventoryManager.instance.CheckItem(KeyNeeded)) 
                         {
                             return;
                         }
+                        if (isLocked && InventoryManager.instance.CheckItem(KeyNeeded)) 
+                        {
+                            InventoryManager.instance.RemoveItem(KeyNeeded);
+                            isLocked = false;
+                        }
+                           
                         StartCoroutine(CamAndAction());
                     }
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object

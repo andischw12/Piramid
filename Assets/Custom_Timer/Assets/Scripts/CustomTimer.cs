@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-
+using TMPro;
+ 
+using System;
 public class CustomTimer : MonoBehaviour
 {
     [Tooltip("Duration of timer in seconds")]
@@ -91,7 +93,7 @@ public class CustomTimer : MonoBehaviour
         public Color color;
     }
     public TimerTextSettings m_timerTextSettings;
-
+    public TextMeshProUGUI timerText;
     public UnityEvent timerEnd;
     bool timerPaused = true;
     float curTime;
@@ -282,15 +284,27 @@ public class CustomTimer : MonoBehaviour
                 if (m_timerTextSettings.milliseconds)
                 {
                     m_timerTextSettings.textObject.text = (duration - curTime).ToString("F2");
+                    
                 }
                 else
                 {
+                    timerText.text = GetTimerSecsAndMinutes(duration - curTime);// andy
                     m_timerTextSettings.textObject.text = (duration - curTime).ToString("F0");
                 }
+              
                 break;
         }
     }
 
+
+    string GetTimerSecsAndMinutes(float time) //andy
+    {
+        
+        if (time < 60)
+            return time.ToString("F0");
+        TimeSpan t = TimeSpan.FromSeconds(time);
+        return t.ToString("mm':'ss"); // 00:03:48
+    }
     public void StartTimer()
     {
         if (curTime >= duration)
