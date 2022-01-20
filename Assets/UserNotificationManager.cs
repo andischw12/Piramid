@@ -8,6 +8,7 @@ public class UserNotificationManager : MonoBehaviour
     public static UserNotificationManager instance;
     public  NotificationItem[] Notifications;
     public GameObject Background;
+    public bool ShowNotifications;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -37,6 +38,8 @@ public class UserNotificationManager : MonoBehaviour
 
     public void ShowNotification(int num) 
     {
+        if (!ShowNotifications)
+            return;
         HideNotification();
         Background.SetActive(true);
         Notifications[num].gameObject.SetActive(true);
