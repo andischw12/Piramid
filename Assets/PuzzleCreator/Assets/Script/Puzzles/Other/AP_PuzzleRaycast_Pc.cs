@@ -35,7 +35,7 @@ public class AP_PuzzleRaycast_Pc : MonoBehaviour {
     public void AP_Init()
     {
         #region
-        objMainCamera = AP_GlobalPuzzleManager_Pc.instance.returnMainCamera();
+        objMainCamera = Camera.main;
         btn_MobilePuzzle = Find_btn_MobilePuzzle();
 
         GlobalPuzzleManager = AP_GlobalPuzzleManager_Pc.instance;

@@ -49,7 +49,7 @@ public class AP_PuzzleDetector_Pc : MonoBehaviour {
         {
             puzzleCamera.gameObject.SetActive(true);
             _mainCam = objMainCamera;
-
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; 
             objMainCamera.enabled = false;
             Transform[] allChildren = objMainCamera.gameObject.GetComponentsInChildren<Transform>(true);
             foreach (Transform child in allChildren)
@@ -117,6 +117,7 @@ public class AP_PuzzleDetector_Pc : MonoBehaviour {
             if (puzzleRaycast) puzzleRaycast.GetComponent<AP_PuzzleRaycast_Pc>().PreventBugWhenPlayerExitAPuzzle();
 
             puzzleCamera.gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 
             //_mainCam.enabled = true;
             Transform[] allChildren = _mainCam.gameObject.GetComponentsInChildren<Transform>(true);
@@ -192,25 +193,6 @@ public class AP_PuzzleDetector_Pc : MonoBehaviour {
     }
  
 
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (!b_FocusActivated && !b_ChooseASpecificLayer
-        ||
-            !b_FocusActivated && b_ChooseASpecificLayer && specificLayer == other.gameObject.layer)
-        {
-            Ap_ActivatePuzzle(null);
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (!b_FocusActivated && !b_ChooseASpecificLayer
-        ||
-            !b_FocusActivated && b_ChooseASpecificLayer && specificLayer == other.gameObject.layer)
-        {
-            Ap_DeactivatePuzzle();
-        }
-    }
+ 
 
 }
