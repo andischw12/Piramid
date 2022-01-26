@@ -17,7 +17,7 @@ public class EnemyControl : MonoBehaviour
     public float meshResolution = 1.0f;             //  How many rays will cast per degree
     public int edgeIterations = 4;                  //  Number of iterations to get a better performance of the mesh filter when the raycast hit an obstacule
     public float edgeDistance = 0.5f;               //  Max distance to calcule the a minumun and a maximum raycast when hits something
-
+    public float distanceToAttack = 0.1f;
 
     public Transform[] waypoints;                   //  All the waypoints where the enemy patrols
     int m_CurrentWaypointIndex;                     //  Current waypoint where the enemy is going to
@@ -31,11 +31,12 @@ public class EnemyControl : MonoBehaviour
     bool m_PlayerNear;                              //  If the player is near, state of hearing
     bool m_IsPatrol;                                //  If the enemy is patrol, state of patroling
     bool m_CaughtPlayer;                            //  if the enemy has caught the player
+    GameObject Player;
 
     void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
         m_PlayerPosition = Vector3.zero;
-        
         m_IsPatrol = true;
         m_CaughtPlayer = false;
         m_playerInRange = false;
@@ -67,6 +68,25 @@ public class EnemyControl : MonoBehaviour
         {
             Patroling();
         }
+
+
+        if (Vector3.Distance(Player.transform.position, transform.position) < distanceToAttack) 
+        {
+            StartCoroutine(Attack());
+        }
+    }
+
+
+    IEnumerator  Attack() 
+    {
+        yield return new WaitForSeconds(1);
+        /*
+        navMeshAgent.isStopped = true;
+        GetComponent<Animator>().SetTrigger("Attack");
+       
+        navMeshAgent.isStopped = false;
+        
+        */
     }
 
     private void Chasing()
@@ -140,6 +160,9 @@ public class EnemyControl : MonoBehaviour
                 }
             }
         }
+
+
+        
     }
 
     private void OnAnimatorMove()
@@ -170,6 +193,7 @@ public class EnemyControl : MonoBehaviour
     void CaughtPlayer()
     {
         m_CaughtPlayer = true;
+        print("Caught player");
     }
 
     void LookingPlayer(Vector3 player)

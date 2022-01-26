@@ -14,6 +14,7 @@ public class InteractbleItem : MonoBehaviour
     [SerializeField] InteracticState CameraState,MainActionState,InfoGraphicState,SecondaryActionState;
     [SerializeField] public float timeBetweenCamAndAcation;
     public UnityEvent MainAction,SecondaryAction;
+    public AudioClip LockSound;
     
     bool isColliding;
 
@@ -61,7 +62,6 @@ public class InteractbleItem : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-             
             if (OutLine)
                 GetComponent<Outline>().enabled = false;
             InfoGraphic.SetActive(false);
@@ -95,8 +95,6 @@ public class InteractbleItem : MonoBehaviour
         if (isColliding && OutLine)
             GetComponent<Outline>().enabled = true;
         FindObjectOfType<ThirdPersonSystem>().GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-        //GameManager.instance.AcceptPlayerInput = true;
-
         ItemCamera.SetActive(false);
         CinemachineBrain.SoloCamera = null;
        // GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonSystem>().enabled = true;
@@ -129,6 +127,8 @@ public class InteractbleItem : MonoBehaviour
                     {
                         if (isLocked && !InventoryManager.instance.CheckIfGotItem(KeyNeeded)) 
                         {
+                            if(LockSound!=null)
+                                SoundManager.instance.PlaySound(LockSound);
                             return;
                         }
                         if (isLocked && InventoryManager.instance.CheckIfGotItem(KeyNeeded)) 
