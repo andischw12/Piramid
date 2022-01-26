@@ -759,7 +759,7 @@ GameObject:
   - component: {fileID: 1344535974}
   - component: {fileID: 1344535973}
   - component: {fileID: 1344535972}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1492,10 +1492,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f53cb8f692532540b1454e327b824e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 1
-  points:
+  navMeshAgent: {fileID: 0}
+  startWaitTime: 4
+  timeToRotate: 2
+  speedWalk: 6
+  speedRun: 9
+  viewRadius: 15
+  viewAngle: 90
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  meshResolution: 1
+  edgeIterations: 4
+  edgeDistance: 0.5
+  waypoints:
   - {fileID: 1612912719}
   - {fileID: 408153600}
   - {fileID: 2061074707}
-  agent: {fileID: 538596559}
-  GurdObject: {fileID: 743122346}
