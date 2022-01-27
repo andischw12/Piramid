@@ -18,7 +18,7 @@ public class EnemyControl : MonoBehaviour
     public int edgeIterations = 4;                  //  Number of iterations to get a better performance of the mesh filter when the raycast hit an obstacule
     public float edgeDistance = 0.5f;               //  Max distance to calcule the a minumun and a maximum raycast when hits something
     public float distanceToAttack = 0.1f;
-
+    public bool GurdFirstPoint;
     public Transform[] waypoints;                   //  All the waypoints where the enemy patrols
     int m_CurrentWaypointIndex;                     //  Current waypoint where the enemy is going to
 
@@ -43,7 +43,7 @@ public class EnemyControl : MonoBehaviour
         m_PlayerNear = false;
         m_WaitTime = startWaitTime;                 //  Set the wait time variable that will change
         m_TimeToRotate = timeToRotate;
-
+        
         m_CurrentWaypointIndex = 0;                 //  Set the initial waypoint
         navMeshAgent = GetComponent<NavMeshAgent>();
 
@@ -79,14 +79,10 @@ public class EnemyControl : MonoBehaviour
 
     IEnumerator  Attack() 
     {
-        yield return new WaitForSeconds(1);
-        /*
         navMeshAgent.isStopped = true;
         GetComponent<Animator>().SetTrigger("Attack");
-       
+        yield return new WaitForSeconds(1);
         navMeshAgent.isStopped = false;
-        
-        */
     }
 
     private void Chasing()
@@ -100,26 +96,40 @@ public class EnemyControl : MonoBehaviour
             Move(speedRun);
             navMeshAgent.SetDestination(m_PlayerPosition);          //  set the destination of the enemy to the player location
         }
-        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)    //  Control if the enemy arrive to the player location
+        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance ||
+            Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 3f )    //  Control if the enemy arrive to the player location
         {
-            if (m_WaitTime <= 0 && !m_CaughtPlayer && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f)
+            /*
+            if (m_WaitTime <= 0 && !m_CaughtPlayer && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 3f)
             {
                 //  Check if the enemy is not near to the player, returns to patrol after the wait time delay
-                m_IsPatrol = true;
-                m_PlayerNear = false;
-                Move(speedWalk);
-                m_TimeToRotate = timeToRotate;
-                m_WaitTime = startWaitTime;
-                navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
+                returnPatrol();
             }
-            else
-            {
-                if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 2.5f)
-                    //  Wait if the current position is not the player position
-                    Stop();
-                m_WaitTime -= Time.deltaTime;
-            }
+
+            //else if (CheckFirstPoint()) { }
+            //else
+            // {
+            //if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 2.5f)
+            //  Wait if the current position is not the player position
+            // Stop();
+            // m_WaitTime -= Time.deltaTime;
+            else 
+            { */
+                returnPatrol(); 
+            //}
+          //  }
         }
+    }
+ 
+
+    void returnPatrol() 
+    {
+        m_IsPatrol = true;
+        m_PlayerNear = false;
+        Move(speedWalk);
+        m_TimeToRotate = timeToRotate;
+        m_WaitTime = startWaitTime;
+        navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
     }
 
     private void Patroling()
@@ -136,7 +146,7 @@ public class EnemyControl : MonoBehaviour
             {
                 //  The enemy wait for a moment and then go to the last player position
                 Stop();
-                m_TimeToRotate -= Time.deltaTime;
+                //m_TimeToRotate -= Time.deltaTime;
             }
         }
         else
@@ -156,6 +166,7 @@ public class EnemyControl : MonoBehaviour
                 else
                 {
                     Stop();
+                     
                     m_WaitTime -= Time.deltaTime;
                 }
             }
@@ -165,10 +176,7 @@ public class EnemyControl : MonoBehaviour
         
     }
 
-    private void OnAnimatorMove()
-    {
-
-    }
+     
 
     public void NextPoint()
     {
@@ -178,9 +186,22 @@ public class EnemyControl : MonoBehaviour
 
     void Stop()
     {
-        GetComponent<Animator>().SetBool("Walk", false);
+        StartCoroutine(StopProcess());
+        /*
         navMeshAgent.isStopped = true;
         navMeshAgent.speed = 0;
+
+        GetComponent<Animator>().SetBool("Walk", false);
+        */
+    }
+    IEnumerator StopProcess() 
+    {
+        navMeshAgent.isStopped = true;
+        navMeshAgent.speed = 0;
+        //yield return new WaitUntil(()=>navMeshAgent.remainingDistance < 0.5);
+        GetComponent<Animator>().SetBool("Walk", false);
+        yield break ;
+
     }
 
     void Move(float speed)
