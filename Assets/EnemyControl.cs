@@ -32,6 +32,9 @@ public class EnemyControl : MonoBehaviour
     bool m_IsPatrol;                                //  If the enemy is patrol, state of patroling
     bool m_CaughtPlayer;                            //  if the enemy has caught the player
     GameObject Player;
+    Vector3 previousPosition;
+    float curSpeed = 0;
+    public float BlendAnimationMult = 1.75f;
 
     void Start()
     {
@@ -43,10 +46,10 @@ public class EnemyControl : MonoBehaviour
         m_PlayerNear = false;
         m_WaitTime = startWaitTime;                 //  Set the wait time variable that will change
         m_TimeToRotate = timeToRotate;
-        
+        previousPosition = transform.position;
         m_CurrentWaypointIndex = 0;                 //  Set the initial waypoint
         navMeshAgent = GetComponent<NavMeshAgent>();
-
+        
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = speedWalk;             //  Set the navemesh speed with the normal speed of the enemy
         navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);    //  Set the destination to the first waypoint
@@ -74,6 +77,11 @@ public class EnemyControl : MonoBehaviour
         {
             StartCoroutine(Attack());
         }
+
+        
+        
+        SetAnimation();
+
     }
 
 
@@ -83,6 +91,8 @@ public class EnemyControl : MonoBehaviour
         GetComponent<Animator>().SetTrigger("Attack");
         yield return new WaitForSeconds(1);
         navMeshAgent.isStopped = false;
+
+        
     }
 
     private void Chasing()
@@ -99,7 +109,7 @@ public class EnemyControl : MonoBehaviour
         if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance ||
             Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 3f )    //  Control if the enemy arrive to the player location
         {
-            /*
+            
             if (m_WaitTime <= 0 && !m_CaughtPlayer && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 3f)
             {
                 //  Check if the enemy is not near to the player, returns to patrol after the wait time delay
@@ -114,10 +124,10 @@ public class EnemyControl : MonoBehaviour
             // Stop();
             // m_WaitTime -= Time.deltaTime;
             else 
-            { */
+            {  
                 returnPatrol(); 
             //}
-          //  }
+             }
         }
     }
  
@@ -206,9 +216,18 @@ public class EnemyControl : MonoBehaviour
 
     void Move(float speed)
     {
-        GetComponent<Animator>().SetBool("Walk", true);
+       
         navMeshAgent.isStopped = false;
+         
         navMeshAgent.speed = speed;
+    }
+    // Blend Walking and idle animation by current object speed
+    void SetAnimation() 
+    {
+        Vector3 curMove = transform.position - previousPosition;
+        curSpeed = curMove.magnitude / Time.deltaTime;
+        previousPosition = transform.position;
+        GetComponent<Animator>().SetFloat("Blend",curSpeed * BlendAnimationMult);
     }
 
     void CaughtPlayer()
