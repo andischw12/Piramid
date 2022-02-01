@@ -17,7 +17,7 @@ public class EnemyControl : MonoBehaviour
     public float meshResolution = 1.0f;             //  How many rays will cast per degree
     public int edgeIterations = 4;                  //  Number of iterations to get a better performance of the mesh filter when the raycast hit an obstacule
     public float edgeDistance = 0.5f;               //  Max distance to calcule the a minumun and a maximum raycast when hits something
-    public float distanceToAttack = 0.1f;
+    public float distanceToAttack;
     public bool GurdFirstPoint;
     public Transform[] waypoints;                   //  All the waypoints where the enemy patrols
     int m_CurrentWaypointIndex;                     //  Current waypoint where the enemy is going to
@@ -29,16 +29,20 @@ public class EnemyControl : MonoBehaviour
     float m_TimeToRotate;                           //  Variable of the wait time to rotate when the player is near that makes the delay
     bool m_playerInRange;                           //  If the player is in range of vision, state of chasing
     bool m_PlayerNear;                              //  If the player is near, state of hearing
-    bool m_IsPatrol;                                //  If the enemy is patrol, state of patroling
+    public bool m_IsPatrol;                                //  If the enemy is patrol, state of patroling
     bool m_CaughtPlayer;                            //  if the enemy has caught the player
-    GameObject Player;
+    public GameObject Player;
     Vector3 previousPosition;
     float curSpeed = 0;
     public float BlendAnimationMult = 1.75f;
+    public bool IsCollidingWithPlayer;
+    public int DamageVal ;
+    public bool CanEnemyAttack;
+    public float LookAtSpeed;
 
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        print("start");
         m_PlayerPosition = Vector3.zero;
         m_IsPatrol = true;
         m_CaughtPlayer = false;
@@ -54,10 +58,12 @@ public class EnemyControl : MonoBehaviour
         navMeshAgent.speed = speedWalk;             //  Set the navemesh speed with the normal speed of the enemy
         navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);    //  Set the destination to the first waypoint
         Move(speedWalk);
+        Player = FindObjectOfType<PlayerManager>().gameObject;
+
     }
 
 
-     
+
 
     private void Update()
     {
@@ -73,26 +79,61 @@ public class EnemyControl : MonoBehaviour
         }
 
 
-        if (Vector3.Distance(Player.transform.position, transform.position) < distanceToAttack) 
+        if ( Vector3.Distance(Player.transform.position, transform.position) < distanceToAttack) 
         {
-            StartCoroutine(Attack());
+            Quaternion lookOnLook = Quaternion.LookRotation(Player.transform.position - transform.position);
+             print(lookOnLook.normalized);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookOnLook, Time.deltaTime);
+
+
+           // transform.LookAt(Player.transform);
+            if (CanEnemyAttack)
+                StartCoroutine(Attack());
+            else
+                Stop();
         }
 
-        
-        
+       
+
+
         SetAnimation();
 
     }
 
-
-    IEnumerator  Attack() 
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.GetComponent<PlayerManager>())
+            IsCollidingWithPlayer = true;
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<PlayerManager>())
+            IsCollidingWithPlayer = false;
+    }
+
+    IEnumerator Attack()
+    {
+        CanEnemyAttack = false;
         navMeshAgent.isStopped = true;
         GetComponent<Animator>().SetTrigger("Attack");
+        
         yield return new WaitForSeconds(1);
         navMeshAgent.isStopped = false;
-
         
+        yield return new WaitForSeconds(1);
+        CanEnemyAttack = true;
+
+    }
+
+    public void OnHit()
+    {
+        if (IsCollidingWithPlayer)
+        {
+            PlayerManager.instance.ChangeHealth(-DamageVal);
+            UserProfileManager.instance.HitEffect();
+            print("attacking");
+        }
     }
 
     private void Chasing()

@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public Level currentLevel;
     public Level[] levelList;
     public CustomTimer timer;
+    public float Health {get; set;}
+
+   
      
 
     private void Awake()
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
     public enum LoadLevelOptions {CurrentLevel,NextLevel};
     public void LoadLevel(LoadLevelOptions l)
     {
+         
         string SceneName;
         int SceneIndex = currentLevel.levelIndex + l.GetHashCode();
         SceneName = System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(SceneIndex));
