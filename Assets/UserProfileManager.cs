@@ -47,12 +47,12 @@ public class UserProfileManager : MonoBehaviour
         }
     }
 
-    public void HitEffect() 
+    public void ColorEffect(Color InputColor) 
     {
-        StartCoroutine(HitEffectProcess());
+        StartCoroutine(ColorEffectProcess(InputColor));
     }
 
-    IEnumerator HitEffectProcess() 
+    IEnumerator ColorEffectProcess(Color InputColor) 
     {
         ColorOverScreen.enabled = true;
 
@@ -60,7 +60,7 @@ public class UserProfileManager : MonoBehaviour
         while(val<0.3f)
         {
             val += 0.075f;
-            ColorOverScreen.color = new Color(ColorOverScreen.color.r, ColorOverScreen.color.g, ColorOverScreen.color.b, val);
+            ColorOverScreen.color = new Color(InputColor.r, InputColor.g,InputColor.b, val);
             yield return new WaitForSeconds(0.05f);
         }
          
@@ -69,7 +69,7 @@ public class UserProfileManager : MonoBehaviour
         while (val > 0f)
         {
             val -= 0.02f;
-            ColorOverScreen.color = new Color(ColorOverScreen.color.r, ColorOverScreen.color.g, ColorOverScreen.color.b, val);
+            ColorOverScreen.color = new Color(InputColor.r,InputColor.g, InputColor.b, val);
             yield return new WaitForSeconds(0.05f);
         }
         ColorOverScreen.enabled = false;

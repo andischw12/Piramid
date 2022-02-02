@@ -131,7 +131,7 @@ public class EnemyControl : MonoBehaviour
         if (IsCollidingWithPlayer)
         {
             PlayerManager.instance.ChangeHealth(-DamageVal);
-            UserProfileManager.instance.HitEffect();
+          
             print("attacking");
         }
     }

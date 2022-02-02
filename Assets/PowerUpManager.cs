@@ -48,7 +48,7 @@ public abstract class PowerUp : MonoBehaviour
     public abstract IEnumerator UseProcess();
      
 }
-public enum PowerUpType {Freeze,Invisible,MagicAttack }
+public enum PowerUpType {Freeze,Invisible,MagicAttack}
 public class PowerUpManager : MonoBehaviour
 {
     public static PowerUpManager instance;
