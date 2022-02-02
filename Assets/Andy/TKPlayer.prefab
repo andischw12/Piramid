@@ -3061,8 +3061,9 @@ GameObject:
   - component: {fileID: 6574926862907556989}
   - component: {fileID: 6574926862907556988}
   - component: {fileID: 6574926862907556867}
+  - component: {fileID: 2487204211273543228}
   m_Layer: 15
-  m_Name: TTBoyA (1)
+  m_Name: TKPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4618,6 +4619,19 @@ MonoBehaviour:
   m_VoiceSource: {fileID: 6574926861470978982}
   m_EffectSource: {fileID: 6574926862757162441}
   m_DelayBetweenVoices: 0.3
+--- !u!114 &2487204211273543228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474218215730972132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b4a0b931351924f9e698f1f6e71368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
 --- !u!1 &474218215730972136
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,64 +5,48 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public abstract class PowerUp : MonoBehaviour
-{
-    public PowerUpType type;
-    Button MyButton;
-    Text Counter;
-    public int CountInt { get; set; }
-    private void Start()
-    {
-        if (GetComponentInChildren<Button>()) 
-        {
-            MyButton = GetComponentInChildren<Button>();
-            MyButton.onClick.AddListener(() => Use());
-        }
-            
-        if (GetComponentInChildren<Text>())
-            Counter = GetComponentInChildren<Text>();
-        
-    }
-    public void Disable()
-    {
-        MyButton.interactable = false;
-    }
 
-    public void Enable()
-    {
-        MyButton.interactable = true;
-    }
-
-    public virtual void Use() 
-    {
-        CountInt--;
-        if (CountInt == 0) 
-        {
-            Disable();
-            return;
-        }
-        StartCoroutine(UseProcess());   
-
-    }
-
-    public abstract IEnumerator UseProcess();
-     
-}
 public enum PowerUpType {Freeze,Invisible,MagicAttack}
 public class PowerUpManager : MonoBehaviour
 {
     public static PowerUpManager instance;
     
-    public PowerUp[] PowerUpArr; 
+    public PowerUp[] PowerUpArr;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        instance = this;
+
+    }
     void Start()
     {
-        PowerUpArr = FindObjectsOfType<PowerUp>();
+        
+        PowerUpArr = GetComponentsInChildren<PowerUp>();
+        ResetPowerUps();
+    }
+
+    public void TurnOnPowerUp(PowerUpType power) 
+    {
+        print(power);
+        if (power ==PowerUpType.Freeze)
+            PowerUpArr[0].Enable();
+        else if (power == PowerUpType.Invisible)
+            PowerUpArr[PowerUpType.Invisible.GetHashCode()].Enable();
+        else
+            PowerUpArr[PowerUpType.MagicAttack.GetHashCode()].Enable();
+    } 
+
+    public void ResetPowerUps() 
+    {
+
+        
+        for (int i = 0; i <3; i++)
+        {
+            print(PowerUpArr.Length);
+            PowerUpArr[i].Disable();
+        }
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+     
 }

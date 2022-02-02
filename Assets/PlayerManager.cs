@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
-    public int Health =100;
+    public int Health = 100;
+    public bool Invincible { get; set; }
     // Start is called before the first frame update
     private void Awake()
     { 
@@ -15,7 +16,8 @@ public class PlayerManager : MonoBehaviour
 
     public void ChangeHealth(int val) 
     {
-       
+        if (val < 0 && Invincible)
+            return;
             
         Health += val;
         if (Health > 100)

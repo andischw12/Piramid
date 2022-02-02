@@ -735,12 +735,14 @@ MonoBehaviour:
   meshResolution: 1
   edgeIterations: 4
   edgeDistance: 0.5
-  distanceToAttack: 1
+  distanceToAttack: 1.5
   GurdFirstPoint: 0
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  m_IsPatrol: 0
+  Player: {fileID: 0}
   BlendAnimationMult: 1.75
   IsCollidingWithPlayer: 0
   DamageVal: 25

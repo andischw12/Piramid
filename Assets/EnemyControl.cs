@@ -9,7 +9,7 @@ public class EnemyControl : MonoBehaviour
     public float timeToRotate = 2;                  //  Wait time when the enemy detect near the player without seeing
     public float speedWalk = 6;                     //  Walking speed, speed in the nav mesh agent
     public float speedRun = 9;                      //  Running speed
-
+    public int life;
     public float viewRadius = 15;                   //  Radius of the enemy view
     public float viewAngle = 90;                    //  Angle of the enemy view
     public LayerMask playerMask;                    //  To detect the player with the raycast
@@ -78,11 +78,12 @@ public class EnemyControl : MonoBehaviour
             Patroling();
         }
 
-
+         
         if ( Vector3.Distance(Player.transform.position, transform.position) < distanceToAttack) 
         {
+            
             Quaternion lookOnLook = Quaternion.LookRotation(Player.transform.position - transform.position);
-             print(lookOnLook.normalized);
+             
 
             transform.rotation = Quaternion.Slerp(transform.rotation, lookOnLook, Time.deltaTime);
 
@@ -118,12 +119,24 @@ public class EnemyControl : MonoBehaviour
         navMeshAgent.isStopped = true;
         GetComponent<Animator>().SetTrigger("Attack");
         
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         navMeshAgent.isStopped = false;
         
-        yield return new WaitForSeconds(1);
+        
         CanEnemyAttack = true;
 
+    }
+
+    public void TakeDamage(int d) 
+    {
+        life -=d;
+        if (life <= 0)
+            Die();
+    }
+
+    void Die() 
+    {
+        Destroy(this.gameObject);
     }
 
     public void OnHit()
@@ -138,6 +151,7 @@ public class EnemyControl : MonoBehaviour
 
     private void Chasing()
     {
+        
         //  The enemy is chasing the player
         m_PlayerNear = false;                       //  Set false that hte player is near beacause the enemy already sees the player
         playerLastPosition = Vector3.zero;          //  Reset the player near position

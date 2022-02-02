@@ -5,19 +5,19 @@ public class LookAtCam : MonoBehaviour {
 
 
 
-    Camera cameraToLookAt;
+    Transform ObjectToLookAt;
 
     // Use this for initialization 
     void Start()
     {
-        cameraToLookAt = Camera.main;
+        ObjectToLookAt = FindObjectOfType<PlayerManager>().transform;
 
     }
 
     // Update is called once per frame 
     void LateUpdate()
     {
-        transform.LookAt(new Vector3(cameraToLookAt.transform.position.x, transform.position.y, cameraToLookAt.transform.position.z));
+        transform.LookAt(new Vector3(ObjectToLookAt.transform.position.x, transform.position.y,transform.position.z));
          
 
     }

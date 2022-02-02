@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PowerUpFreeze : PowerUp
 {
-    public float FreezeTime;
+    
      
 
-    public override IEnumerator  UseProcess() 
+    public override IEnumerator  UseProcess(float powerUpVal) 
     {
+        
         FindObjectOfType<CustomTimer>().PauseTimer();
-        yield return new WaitForSeconds(FreezeTime);
+        yield return new WaitForSeconds(powerUpVal);
         FindObjectOfType<CustomTimer>().StartTimer();
     }
      
