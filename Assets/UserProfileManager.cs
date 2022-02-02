@@ -11,6 +11,7 @@ public class UserProfileManager : MonoBehaviour
     public Slider Health;
     public float SliderTime = 1.5f;
     [SerializeField] Image ColorOverScreen;
+    
 
     private void Awake()
     {
@@ -68,7 +69,7 @@ public class UserProfileManager : MonoBehaviour
 
         while (val > 0f)
         {
-            val -= 0.02f;
+            val -= 0.045f;
             ColorOverScreen.color = new Color(InputColor.r,InputColor.g, InputColor.b, val);
             yield return new WaitForSeconds(0.05f);
         }

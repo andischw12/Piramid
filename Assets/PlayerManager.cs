@@ -27,8 +27,7 @@ public class PlayerManager : MonoBehaviour
         }
         if(val<0)
             UserProfileManager.instance.ColorEffect(Color.red);
-        else if(val>0)
-            UserProfileManager.instance.ColorEffect(Color.green);
+        
         UserProfileManager.instance.SetSlider(Health);
     }
 
