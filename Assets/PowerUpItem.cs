@@ -10,9 +10,10 @@ public abstract class PickUpItem : MonoBehaviour
     protected virtual void PickUpEffect()
     {
 
-        ParticleSystem tmp = Instantiate(PickupParticleEffect, transform.position, transform.rotation);
+        ParticleSystem tmp = Instantiate(PickupParticleEffect, transform.position,transform.rotation);
         tmp.Play();
         tmp.loop = false;
+        Destroy(tmp.gameObject, tmp.main.startLifetimeMultiplier);
         Destroy(gameObject);
     }
    public abstract void PickUp();
