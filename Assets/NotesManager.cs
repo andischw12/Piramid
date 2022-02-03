@@ -9,7 +9,8 @@ public class NotesManager : MonoBehaviour
     [SerializeField] public GameObject[] Letters;
     [SerializeField] Camera[] cameras;
     NoteItem currentNote;
-     
+    [SerializeField] LayerMask mask;
+
     // Start is called before the first frame update
 
     private void Start()
@@ -52,7 +53,7 @@ public class NotesManager : MonoBehaviour
             {ray = Camera.main.ScreenPointToRay(Input.mousePosition); } 
             catch { print("EROR"); return;}
            
-            LayerMask mask = LayerMask.GetMask("Note");
+            //LayerMask mask = LayerMask.GetMask("Note");
 
             if (Physics.Raycast(ray, out hit, 100.0f,mask))
             {

@@ -3,50 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-
-
-public enum PowerUpType {Freeze,Invisible,MagicAttack}
+public enum PowerUpType {Freeze,Invicible,Attack}
 public class PowerUpManager : MonoBehaviour
 {
     public static PowerUpManager instance;
-    
-    public PowerUp[] PowerUpArr;
+    PowerUpUIButton[] PowerUpArr;
     // Start is called before the first frame update
     private void Awake()
     {
         instance = this;
-
     }
     void Start()
     {
-        
-        PowerUpArr = GetComponentsInChildren<PowerUp>();
+        PowerUpArr = GetComponentsInChildren<PowerUpUIButton>();
         ResetPowerUps();
     }
-
-    public void TurnOnPowerUp(PowerUpType power) 
+    public void TurnOnPowerUp(PowerUpType power,int value) 
     {
         print(power);
         if (power ==PowerUpType.Freeze)
-            PowerUpArr[0].Enable();
-        else if (power == PowerUpType.Invisible)
-            PowerUpArr[PowerUpType.Invisible.GetHashCode()].Enable();
+            PowerUpArr[0].Enable(value);
+        else if (power == PowerUpType.Invicible)
+            PowerUpArr[PowerUpType.Invicible.GetHashCode()].Enable(value);
         else
-            PowerUpArr[PowerUpType.MagicAttack.GetHashCode()].Enable();
+            PowerUpArr[PowerUpType.Attack.GetHashCode()].Enable(value);
     } 
-
     public void ResetPowerUps() 
     {
-
-        
         for (int i = 0; i <3; i++)
         {
             print(PowerUpArr.Length);
             PowerUpArr[i].Disable();
         }
     }
-
-    // Update is called once per frame
-     
 }

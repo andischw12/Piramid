@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hologram
+  m_Shader: {fileID: 4800000, guid: def6c17fc9750ee4b8f54077315a0621, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CRTNoise:
+        m_Texture: {fileID: 2800000, guid: e74079df3013ed74bbe96162536a676a, type: 3}
+        m_Scale: {x: 8.69, y: 0.61}
+        m_Offset: {x: 0, y: 0}
+    - _HolographicLine:
+        m_Texture: {fileID: 2800000, guid: fd8a456f34124f747b29774327ba0dd9, type: 3}
+        m_Scale: {x: 0.77, y: 1.16}
+        m_Offset: {x: 0, y: 0}
+    - _HolographicScanline:
+        m_Texture: {fileID: 2800000, guid: af3827aa7b60e6f4ba38e85d84c16229, type: 3}
+        m_Scale: {x: 3, y: 6.72}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Intensity: 19.67
+    - _Transparent: 1
+    - _blendWithOriginal: 1
+    - _noiseIntensity: 0.088
+    - _scanlineIntensity: 0.7
+    - _slit: 0.01
+    m_Colors:
+    - _Color: {r: 0.33490568, g: 0.5170148, b: 1, a: 1}

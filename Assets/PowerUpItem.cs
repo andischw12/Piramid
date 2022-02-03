@@ -2,19 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUpItem : MonoBehaviour
-{
-    public PowerUpType Type;
-    // Start is called before the first frame update
 
-    private void OnTriggerEnter(Collider other)
+public abstract class PickUpItem : MonoBehaviour 
+{
+    
+    [SerializeField] ParticleSystem PickupParticleEffect;
+    protected virtual void PickUpEffect()
     {
-        if(other.tag == "Player") 
+
+        ParticleSystem tmp = Instantiate(PickupParticleEffect, transform.position, transform.rotation);
+        tmp.Play();
+        tmp.loop = false;
+        Destroy(gameObject);
+    }
+   public abstract void PickUp();
+
+}
+
+public abstract class FloorPickUpItem : PickUpItem 
+{
+    [SerializeField] protected int value;
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
         {
-            print("hit");
-            PowerUpManager.instance.TurnOnPowerUp(Type);
-            Destroy(gameObject);
+            PickUp();
+            PickUpEffect();
         }
     }
+  
+}
 
+
+public class PowerUpItem : FloorPickUpItem
+{
+    public PowerUpType Type;
+    public override void PickUp()
+    {
+        PowerUpManager.instance.TurnOnPowerUp(Type, value);
+        PickUpEffect();
+    }
 }

@@ -10,7 +10,7 @@ public class InteractbleItem : MonoBehaviour
     enum InteracticState {Off,OnCollisonEnter,LeftMouseClick,OnCollisonExit,RightMouseClick};
     [SerializeField] GameObject ItemCamera, InfoGraphic;
     [SerializeField] public bool OutLine, isLocked;
-    [SerializeField] InventoryItems KeyNeeded;
+    [SerializeField] InventoryItemType KeyNeeded;
     [SerializeField] InteracticState CameraState,MainActionState,InfoGraphicState,SecondaryActionState;
     [SerializeField] public float timeBetweenCamAndAcation;
     public UnityEvent MainAction,SecondaryAction;
@@ -112,7 +112,7 @@ public class InteractbleItem : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    private void Update()
     {
          
             if (isColliding && GameManager.instance.AcceptPlayerInput&& (Input.GetMouseButtonDown(0)||Input.GetButton("Interact")))

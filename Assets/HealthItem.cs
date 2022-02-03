@@ -2,22 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthItem : MonoBehaviour
+public class HealthItem : FloorPickUpItem
 {
-     
-    [SerializeField] int value;
-    // Start is called before the first frame update
-
-
-
-
-    private void OnTriggerEnter(Collider other)
+    public override void PickUp()
     {
-        if (other.tag == "Player") 
-        {
-            PlayerManager.instance.ChangeHealth(value);
-            Destroy(this.gameObject);
-        }
+        PlayerManager.instance.ChangeHealth(value);
     }
-
 }

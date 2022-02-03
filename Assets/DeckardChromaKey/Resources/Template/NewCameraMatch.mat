@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: NewCameraMatch
+  m_Shader: {fileID: 4800000, guid: 18b14e61f9175fa428870964dc4812e2, type: 3}
+  m_ShaderKeywords: ROUGHNESS_ON _MATEKEY_ON
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -110
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture0:
+        m_Texture: {fileID: 2800000, guid: 60cc2a8a59367f8439c1499c7be64854, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ultimatte:
+        m_Texture: {fileID: 2800000, guid: dec117226d0b0cd4eaa3d09c53121afb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Blurring: 0
+    - _Border: 0.0008
+    - _ColorCleanup: 1
+    - _Contour: 7.74
+    - _Contrast: 1
+    - _ContrastMidpoint: 0.42
+    - _Cutoff: 0.5
+    - _DespillIlluminance: -0.5
+    - _DespillIlluminance1: 0.54
+    - _Directions: 44
+    - _Float0: 0.27
+    - _Float1: 0.72
+    - _Float2: 0.57
+    - _Float3: 0
+    - _Float4: 1
+    - _Float6: 0.45
+    - _Gamma: 1
+    - _KeyingAlgorithm: 0.5
+    - _Keyword0: 0
+    - _MEtalic: 1
+    - _MaskPower: 4.29
+    - _MaskPower1: 1.05
+    - _MateKey: 1
+    - _MateKey1: 1
+    - _NormalStrenght: 0.26
+    - _PortraitMode: 0
+    - _Power: 1.22
+    - _Power2: 173.21
+    - _PreCorrectGamma: 1
+    - _Quality: 9
+    - _Sharpen: 3
+    - _Size: 0.2
+    - _Smoothness: 0
+    - _TransitionFalloff: 0.5
+    - _TransitionPosition: 0.47
+    - __dirty: 0
+    - _despillChroma: 1
+    - _despillChroma1: 1
+    - _despillLuma: -0.22
+    - _leftCut: 0
+    - _orientation: 0
+    - _sharpenSmooth: 0
+    - _smooth: 0.22
+    - _smooth1: 0.07
+    - _smoothDefringe: 0.6
+    - _tint: 0
+    - _treshold: -0.004
+    - _treshold1: 1.42
+    - _tresholdDefringe: -2.37
+    - _whiteBallance: -0.17
+    m_Colors:
+    - _Color0: {r: 0.6117647, g: 0.8431373, b: 0.5843138, a: 1}
+    - _DespillColor: {r: 0.011347453, g: 0.4811321, b: 0.16127875, a: 0}
+    - _KEyColor: {r: 0.371544, g: 0.6320754, b: 0.30113015, a: 1}
+    - _KEyColor1: {r: 0.12938006, g: 0.6037736, b: 0, a: 0}
+    - _KEyColor2: {r: 0.02883587, g: 0.6792453, b: 0.0954437, a: 0}
+    - _KeyColor: {r: 0.1341558, g: 0.2924528, b: 0.1282929, a: 1}
+    - _KeyColor1: {r: 0.35243514, g: 0.5849056, b: 0.10208244, a: 1}
+    - _KeyColor2: {r: 0.2460436, g: 0.49056596, b: 0.18280509, a: 1}
+    - _KeyColor3: {r: 0.4325296, g: 0.8018868, b: 0.4122908, a: 1}
+    - _LuminanceRemapping: {r: 0, g: 1, b: -2.53, a: 1.96}
+    - _Threshold: {r: 0.0034090877, g: 0.21288933, b: -0.2, a: 1}
+    - _ThresholdLow: {r: 0.0017551742, g: 0.20208323, b: -0.2, a: 1}
+    - _Vector0: {r: -0.002, g: 0, b: 0, a: 0}
+    - _Vector1: {r: 0.002, g: 0, b: 0, a: 0}
+    - _Vector2: {r: 0, g: 0.002, b: 0, a: 0}
+    - _Vector3: {r: 0, g: -0.002, b: 0, a: 0}

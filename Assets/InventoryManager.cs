@@ -5,11 +5,11 @@ using UnityEngine;
 
 
 
-public enum InventoryItems {None,GoldenKey,SilverKey,BronzeKey};
+public enum InventoryItemType {None,GoldenKey,SilverKey,BronzeKey};
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
-    public InventoryItem[] GuiInventoryArr;
+    public InventoryItemUI[] GuiInventoryArr;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        GuiInventoryArr = GetComponentsInChildren<InventoryItem>();
+        GuiInventoryArr = GetComponentsInChildren<InventoryItemUI>();
         HideAll();
          
     }
@@ -36,7 +36,7 @@ public class InventoryManager : MonoBehaviour
 
     void HideAll() 
     {
-        foreach (InventoryItem gm in GuiInventoryArr)
+        foreach (InventoryItemUI gm in GuiInventoryArr)
         {
              gm.gameObject.SetActive(false);
         }
@@ -44,35 +44,35 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    public void AddItem(InventoryItems i) 
+    public void AddItem(InventoryItemType i) 
     {
 
         
-        foreach(InventoryItem gm in GuiInventoryArr) 
+        foreach(InventoryItemUI gm in GuiInventoryArr) 
         {
-            if (gm.item == i)
+            if (gm.type == i)
                 gm.gameObject.SetActive(true);
         }
         ShowOrHideInventory();
     }
 
 
-    public void RemoveItem(InventoryItems i) 
+    public void RemoveItem(InventoryItemType i) 
     {
         
-        foreach (InventoryItem gm in GuiInventoryArr)
+        foreach (InventoryItemUI gm in GuiInventoryArr)
         {
-            if (gm.item == i)
+            if (gm.type == i)
                 gm.gameObject.SetActive(false);
         }
         ShowOrHideInventory();
     }
 
-    public bool CheckIfGotItem(InventoryItems i) 
+    public bool CheckIfGotItem(InventoryItemType i) 
     {
-        foreach (InventoryItem gm in GuiInventoryArr)
+        foreach (InventoryItemUI gm in GuiInventoryArr)
         {
-            if (gm.item == i && gm.isActiveAndEnabled)
+            if (gm.type == i && gm.isActiveAndEnabled)
                 return true;
         }
         return false;
@@ -81,7 +81,7 @@ public class InventoryManager : MonoBehaviour
     void ShowOrHideInventory() 
     {
         int count = 0;
-        foreach (InventoryItem gm in GuiInventoryArr)
+        foreach (InventoryItemUI gm in GuiInventoryArr)
         if(gm.gameObject.activeInHierarchy)
                 count++;
         if (count == 0 && GetComponent<Animator>().GetBool("Show"))
@@ -106,11 +106,11 @@ public class InventoryManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 100.0f, mask))
             {
-                if (hit.transform.tag == "InventoryItem")
+                if (hit.transform.tag == "InventoryItem" && Vector3.Distance(PlayerManager.instance.transform.position,hit.transform.position)<2)
                 {
 
-                    AddItem(hit.transform.GetComponent<InventoryItem>().item);
-                    Destroy(hit.transform.gameObject);
+                    AddItem(hit.transform.GetComponent<InventoryPickUpItem>().type);
+                    hit.transform.GetComponent<InventoryPickUpItem>().PickUp();
                 }
                 Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
             }

@@ -5,7 +5,7 @@ public class LookAtCam : MonoBehaviour {
 
 
 
-    Transform ObjectToLookAt;
+    [SerializeField]Transform ObjectToLookAt;
 
     // Use this for initialization 
     void Start()
@@ -15,10 +15,11 @@ public class LookAtCam : MonoBehaviour {
     }
 
     // Update is called once per frame 
-    void LateUpdate()
+    void Update()
     {
-        transform.LookAt(new Vector3(ObjectToLookAt.transform.position.x, transform.position.y,transform.position.z));
-         
+        gameObject.transform.LookAt(new Vector3(Camera.main.transform.position.x, gameObject.transform.position.y, Camera.main.transform.position.z), new Vector3(0, -1, 0));
+        gameObject.transform.Rotate(new Vector3(180, 0, 0));
+
 
     }
 
