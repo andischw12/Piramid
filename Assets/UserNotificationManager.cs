@@ -1,52 +1,48 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UserNotificationManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     public static UserNotificationManager instance;
-    public  NotificationItem[] Notifications;
-    public GameObject Background;
-    public bool ShowNotifications;
+    Animator NotificationAnimator;
+    Transform[] Components;
     private void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
-        HideNotification();
+        instance = this;
     }
-
-
     private void Start()
     {
-        
+        NotificationAnimator =GetComponentInChildren<Animator>();
+        Components = GetComponentsInChildren<Transform>();
+        TurnComponentsOff();
     }
-    public void HideNotification()
+    private void HideNotification()
     {
-        Background.SetActive(false);
-        foreach (NotificationItem gm in Notifications)
-        {
-            gm.gameObject.SetActive(false);
-        }
+        NotificationAnimator.SetTrigger("HideNotification");
     }
-
-    public void ShowNotification(int num) 
+    public void ShowNotification(string text,float timeToShow) 
     {
-        if (!ShowNotifications)
-            return;
+        TurnComponentsOn();
+        StartCoroutine(ShowNotificationProcess(text,timeToShow));
+    }
+    IEnumerator ShowNotificationProcess(string text, float timeToShow) 
+    {
+        GetComponentInChildren<TextMeshProUGUI>().text = text;
+        NotificationAnimator.SetTrigger("ShowNotification");
+        yield return new WaitForSeconds(timeToShow);
         HideNotification();
-        Background.SetActive(true);
-        Notifications[num].gameObject.SetActive(true);
-        Notifications[num].counter++;
-        Invoke("HideNotification",3f);
     }
-
-
-
+    void TurnComponentsOn() 
+    {
+        foreach (Transform t in Components)
+            t.gameObject.SetActive(true);
+    }
+    void TurnComponentsOff()
+    {
+        foreach (Transform t in Components) 
+            t.gameObject.SetActive(false);
+    }
 }

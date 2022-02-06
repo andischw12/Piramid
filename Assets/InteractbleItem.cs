@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -41,8 +41,8 @@ public class InteractbleItem : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if(UserNotificationManager.instance.Notifications[0].counter<2)
-                UserNotificationManager.instance.ShowNotification(0);
+            UserNotificationManager.instance.ShowNotification(FlipHebrew.Flip("מה שלומך?\nהיי אנדי"), 3);
+
             if (OutLine)
                 GetComponent<Outline>().enabled = true;
             if(InfoGraphicState == InteracticState.OnCollisonEnter)
@@ -78,9 +78,6 @@ public class InteractbleItem : MonoBehaviour
     {
         if (OutLine)
             GetComponent<Outline>().enabled = false;
-        if (UserNotificationManager.instance.Notifications[1].counter < 1)
-            UserNotificationManager.instance.ShowNotification(1);
-
             FindObjectOfType<ThirdPersonSystem>().GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         ItemCamera.SetActive(true);
         CinemachineBrain.SoloCamera = ItemCamera.GetComponent<CinemachineVirtualCamera>();

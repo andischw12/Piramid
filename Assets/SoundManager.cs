@@ -6,6 +6,8 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
     // Start is called before the first frame update
+    [SerializeField] AudioSource EffetsAudioSource;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -22,6 +24,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(AudioClip c) 
     {
-        GetComponent<AudioSource>().PlayOneShot(c);
+        EffetsAudioSource.PlayOneShot(c);
     }
 }

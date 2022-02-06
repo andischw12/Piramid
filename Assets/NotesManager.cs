@@ -21,8 +21,6 @@ public class NotesManager : MonoBehaviour
 
     public void ShowNote(int num) 
     {
-        if (UserNotificationManager.instance.Notifications[2].counter < 1)
-            UserNotificationManager.instance.ShowNotification(2);
         Background.SetActive(true);
         Letters[num].SetActive(true);
         GameManager.instance.AcceptPlayerInput = false;
