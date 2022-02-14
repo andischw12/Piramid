@@ -649,6 +649,7 @@ Transform:
   - {fileID: 2846167859882573773}
   - {fileID: 2846020105407954909}
   - {fileID: 5189098140115744829}
+  - {fileID: 7742114513435969676}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -724,11 +725,7 @@ MonoBehaviour:
   edgeDistance: 0.5
   distanceToAttack: 1
   GurdFirstPoint: 0
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypoints: []
   m_IsPatrol: 0
   Player: {fileID: 0}
   BlendAnimationMult: 1.75
@@ -1177,6 +1174,50 @@ Transform:
   m_Father: {fileID: 2846224683707958975}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 5.638716, y: -2.5347393, z: 4.526143}
+--- !u!1 &4847691451215254638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7742114513435969676}
+  - component: {fileID: 7736797869679069904}
+  m_Layer: 0
+  m_Name: PhisicalCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7742114513435969676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4847691451215254638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2837306022753596715}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &7736797869679069904
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4847691451215254638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.1737239
+  m_Center: {x: 0.018598387, y: 0.5607213, z: 0}
 --- !u!1001 &7344550684025721497
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -46,6 +46,16 @@ public class GameManager : MonoBehaviour
         SceneName = System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(SceneIndex));
         Initiate.Fade(SceneName, Color.black, 1f);
     }
+
+    public void LoadLevel(LoadLevelOptions l,Color color, float t)
+    {
+
+        string SceneName;
+        int SceneIndex = currentLevel.levelIndex + l.GetHashCode();
+        SceneName = System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(SceneIndex));
+        Initiate.Fade(SceneName, color, t);
+    }
+
     //=========================
 
     //========Timer Control====

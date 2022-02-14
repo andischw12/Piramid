@@ -11,7 +11,7 @@ public class AP_PuzzleRaycast_Pc : MonoBehaviour {
     public float                    RayDistance = 10;
     private bool                    b_PuzzleFind = false;
 
-    private bool                    b_isPuzzleActivated;
+   public  bool                    b_isPuzzleActivated;
 
     private AP_PuzzleDetector_Pc currentPuzzle;
 
@@ -28,6 +28,7 @@ public class AP_PuzzleRaycast_Pc : MonoBehaviour {
 
     void Start()
     {
+         
         if (b_AutoInitialization)
             AP_Init();
     }
@@ -157,10 +158,11 @@ public class AP_PuzzleRaycast_Pc : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Puzzle" && !b_isPuzzleActivated) 
+        if (other.tag == "Puzzle" && !other.transform.parent.GetComponentInChildren<actionsWhenPuzzleIsSolved_Pc>().IsPuzzleSolved) 
         {
            
             b_PuzzleFind = true;
+           
             other.transform.parent.GetComponentInChildren<Outline>().enabled = true;
             currentPuzzle = other.transform.parent.GetComponentInChildren<AP_PuzzleDetector_Pc>();
             print(currentPuzzle.transform.name);
@@ -175,7 +177,7 @@ public class AP_PuzzleRaycast_Pc : MonoBehaviour {
         {
 
             b_PuzzleFind = false;
-            currentPuzzle = null;
+            b_isPuzzleActivated = false;
             other.transform.parent.GetComponentInChildren<Outline>().enabled = false;
 
         }

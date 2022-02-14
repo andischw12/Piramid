@@ -223,7 +223,7 @@ public class ContactDoor : MonoBehaviour
 		}
 	}
 
-	void OnCollisionEnter(Collision collision)
+	void OnTriggerEnter(Collider collision)
 	{
 		//Debug.Log("Collided with door: " + collision.gameObject.name);
 
@@ -231,7 +231,7 @@ public class ContactDoor : MonoBehaviour
 			return;
 
 		bool clockwise = true;
-
+		/*
 		if (type==doorType.Hinged)		// Determine which way to swing open (irrelevant if sliding)
 		{
 			ContactPoint contact = collision.contacts[0];
@@ -250,7 +250,8 @@ public class ContactDoor : MonoBehaviour
 			else
 				clockwise = true;
 		}
-		else if (type == doorType.Sliding)
+		*/
+		if (type == doorType.Sliding)
 		{
 			if (targetOpen != 0f)	// Sliding doors should not move until they have started to close naturally
 				return;
@@ -268,7 +269,11 @@ public class ContactDoor : MonoBehaviour
 	}
 
 	// Exposed so you can manually control door from script
-	public void Open( bool clockwise )
+	public void Open2 ()
+	{
+		Open(true);
+	}
+	public void Open(bool clockwise)
 	{
 		 
 		// Trigger opening SFX if the door was previously closed

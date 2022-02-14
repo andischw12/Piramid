@@ -36,6 +36,8 @@ public class PlayerManager : MonoBehaviour
 
     public void Die() 
     {
-        GameManager.instance.LoadLevel(GameManager.LoadLevelOptions.CurrentLevel);
+        GameManager.instance.LoadLevel(GameManager.LoadLevelOptions.CurrentLevel, Color.black, 3f);
     }
+
+     
 }

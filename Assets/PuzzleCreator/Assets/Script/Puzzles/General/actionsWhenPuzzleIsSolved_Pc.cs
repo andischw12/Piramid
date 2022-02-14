@@ -6,7 +6,7 @@ using UnityEngine;
 public class actionsWhenPuzzleIsSolved_Pc : MonoBehaviour {
     public bool                     SeeInspector = false;
     public bool                     onlyFocusMode = false;
-
+    public bool IsPuzzleSolved { get; set; }
     public GameObject               playerCamera;
     public GameObject               feedbackCamera;
  
@@ -40,6 +40,7 @@ public class actionsWhenPuzzleIsSolved_Pc : MonoBehaviour {
 
 	private void Start()
 	{
+        objectActivatedWhenPuzzleIsSolved = null;
         #region
         a_Source = GetComponent<AudioSource>();
         playerCamera = AP_GlobalPuzzleManager_Pc.instance.returnMainCamera().gameObject;
@@ -132,6 +133,7 @@ public class actionsWhenPuzzleIsSolved_Pc : MonoBehaviour {
 
     public bool returnactionsWhenPuzzleIsSolved()
     {
+        IsPuzzleSolved = true;
         return b_actionsWhenPuzzleIsSolved;
     }
  
