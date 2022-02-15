@@ -30,6 +30,7 @@ public class InteractbleItem : MonoBehaviour
             GetComponent<Outline>().OutlineMode = Outline.Mode.OutlineVisible;
             GetComponent<Outline>().enabled = false;
         }
+        if(ItemCamera)
         ItemCamera.SetActive(false);
     }
 
@@ -95,6 +96,7 @@ public class InteractbleItem : MonoBehaviour
     IEnumerator CamAndAction()
     {
         //if(CameraState == InteracticState.MouseClick)
+        if(ItemCamera)
             TurnItemCamOn();
         yield return new WaitForSeconds(timeBetweenCamAndAcation);
         if(MainActionState != InteracticState.Off)
