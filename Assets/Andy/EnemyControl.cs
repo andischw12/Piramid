@@ -104,8 +104,12 @@ public class EnemyControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerManager>())
+        if (other.GetComponent<PlayerManager>()) 
+        {
+            Attack();
             IsCollidingWithPlayer = true;
+        }
+           
     }
     private void OnTriggerExit(Collider other)
     {

@@ -158,7 +158,7 @@ public class AP_PuzzleRaycast_Pc : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Puzzle" && !other.transform.parent.GetComponentInChildren<actionsWhenPuzzleIsSolved_Pc>().IsPuzzleSolved) 
+        if (other.tag == "Puzzle"   && other.transform.parent.GetComponentInChildren<actionsWhenPuzzleIsSolved_Pc>()&&!other.transform.parent.GetComponentInChildren<actionsWhenPuzzleIsSolved_Pc>().b_actionsWhenPuzzleIsSolved) 
         {
            
             b_PuzzleFind = true;
