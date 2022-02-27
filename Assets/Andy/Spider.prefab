@@ -708,12 +708,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 0}
   startWaitTime: 2
-  timeToRotate: 1
-  speedWalk: 1
-  speedRun: 1.2
+  timeToRotate: 0.5
+  speedWalk: 1.2
+  speedRun: 1.5
   life: 100
-  viewRadius: 3
-  viewAngle: 270
+  viewRadius: 5
+  viewAngle: 360
   playerMask:
     serializedVersion: 2
     m_Bits: 32832

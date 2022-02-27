@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2572146607267631069}
   - component: {fileID: 3793869730105320526}
   - component: {fileID: 864687353252688306}
-  m_Layer: 0
+  - component: {fileID: 4066198927575472317}
+  m_Layer: 11
   m_Name: big_box
-  m_TagString: Untagged
+  m_TagString: InteractableItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4066198927575472317
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60715639772312418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: bb0e9c1c45f38914db68aed98f5b00ae, type: 3}
 --- !u!1 &148958049429255783
 GameObject:
   m_ObjectHideFlags: 0
