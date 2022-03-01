@@ -46,8 +46,13 @@ namespace DiasGames.ThirdPersonSystem
                     if (!isHardLand)
                     {
                         float damageAmount = ((height - m_MinHeightToCauseDamagee) / (m_HeightToDie - m_MinHeightToCauseDamagee)) * 100f;
-                        if(damageAmount > 0)
+                        if (damageAmount > 0) 
+                        {
                             GlobalEvents.ExecuteEvent("Damage", gameObject, damageAmount);
+                            PlayerManager.instance.ChangeHealth(-(int)damageAmount);
+
+                        }
+
                     }
 
                     isHardLand = true;
